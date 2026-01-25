@@ -23,7 +23,7 @@ export function extractCodeText(codeElement: Element): string {
 		return lines.join("\n");
 	}
 	// 对于没有行结构的代码块
-	const codeElements = codeElement.querySelectorAll(".code:not(summary *)");
+	const codeElements = codeElement.querySelectorAll(".code:not(note *)");
 	if (codeElements.length > 0) {
 		const lines: string[] = [];
 		for (let i = 0; i < codeElements.length; i++) {

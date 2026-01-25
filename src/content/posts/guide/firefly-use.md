@@ -3,8 +3,7 @@ title: Firefly 简单使用指南
 published: 1970-01-11
 pinned: false
 description: "如何使用 Firefly 博客模板。"
-image: "./cover.webp"
-tags: ["Firefly", "博客", "Markdown", "使用指南"]
+image: "./images/cover2.webp"
 category: 博客指南
 draft: false
 ---

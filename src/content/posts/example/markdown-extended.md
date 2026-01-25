@@ -4,7 +4,6 @@ published: 1970-01-01
 updated: 1970-01-01
 description: "了解 Firefly 中的 Markdown 功能"
 image: ""
-tags: [演示, 示例, Markdown, Firefly]
 category: "文章示例"
 draft: false
 ---
@@ -45,7 +44,7 @@ export const siteConfig: SiteConfig = {
 
 这是 GitHub 官方支持的 5 种基本类型。
 
-![GitHub](./images/github.png)
+![GitHub](../images/github.png)
 
 **基本语法**
 
@@ -166,7 +165,7 @@ export const siteConfig: SiteConfig = {
 ```
 </details>
 
-![Obsidian](./images/obsidian.png)
+![Obsidian](../images/obsidian.png)
 
 ---
 
@@ -198,7 +197,7 @@ export const siteConfig: SiteConfig = {
 ```
 </details>
 
-![VitePress](./images/vitepress.png)
+![VitePress](../images/vitepress.png)
 
 ---
 
