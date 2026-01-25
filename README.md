@@ -1,8 +1,3 @@
-
-<img src="./docs/images/1131.png" width = "405" height = "511" alt="Firefly" align=right />
-
-<div align="center">
-
 # Firefly
 > 一款清新美观的 Astro 博客主题模板
 > 
