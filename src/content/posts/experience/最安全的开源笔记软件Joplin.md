@@ -66,8 +66,6 @@ Joplin的云同步支持多种方式，配置的路径是：工具 => 选项 => 
 
 ## Joplin Server
 
-> 如果您需要购买云服务器或者对象存储，请看：[https://blog.ch.ikaros.run/archives/vps\_discounts](https://blog.ch.ikaros.run/archives/vps_discounts)
-
 官方的docker镜像地址：[https://hub.docker.com/r/joplin/server](https://hub.docker.com/r/joplin/server)
 
 这里给一个 docker-compose.yaml 文件供参考
