@@ -27,8 +27,7 @@
 ---
 🚀 快速指南：
 [**🖥️在线预览**](https://firefly.cuteleaf.cn/) /
-[**📝使用文档**](https://docs-firefly.cuteleaf.cn/) /
-[**🍀我的博客**](https://blog.cuteleaf.cn) 
+[**📝使用文档**](https://docs-firefly.cuteleaf.cn/) 
 
 📖 README：
 **[简体中文](README.md)** | **[English](README.en.md)** | **[日本語](docs/README.ja.md)** | **[Русский](docs/README.ru.md)**
