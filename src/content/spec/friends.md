@@ -19,7 +19,9 @@ description: "与优秀的朋友们一起成长"
 
 ## ✉️申请友链
 
-请将您的网站信息发送邮件至：[chivehao@ikaros.run](mailto:chivehao@ikaros.run)
+两种方式选一种即可：
+1. 在下方评论留下您的站点信息
+2. 请将您的网站信息按下面的格式发送邮件至：[chivehao@ikaros.run](mailto:chivehao@ikaros.run)
 
 **邮件标题**：`友链申请 - [您的站点名称]`
 
