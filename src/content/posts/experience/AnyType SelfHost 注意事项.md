@@ -3,6 +3,7 @@ title: AnyType SelfHost 注意事项
 published: 2026-01-15
 image: 'https://imgbed.ikaros.run/file/posts/1769414769329_20260126160601432.png'
 category: '经验总结'
+tags: ["开源", "自部署"]
 ---
 
 ## 前言
