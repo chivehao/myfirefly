@@ -6,7 +6,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	enable: true,
 
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
-	mode: "meting",
+	mode: "local",
 
 	// Meting API 配置
 	meting: {
@@ -37,6 +37,14 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
+				name: "太空漫步 Space Walk",
+				artist: "太空漫步 Space Walk / HOYO-MiX",
+				url: "/assets/music/太空漫步 Space Walk.flac",
+				cover: "/assets/music/cover/109951168505830245.jpg",
+				// 歌词内容，支持 LRC 格式
+				lrc: "",
+			},
+			{
 				name: "使一颗心免于哀伤",
 				artist: "知更鸟 / HOYO-MiX / Chevy",
 				url: "/assets/music/使一颗心免于哀伤-哼唱.wav",
@@ -60,7 +68,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 		// 预加载：'none'=不预加载, 'metadata'=预加载元数据, 'auto'=自动
 		preload: "auto",
 		// 默认音量 (0-1)
-		volume: 0.7,
+		volume: 0.4,
 		// 是否互斥播放（同时只能播放一个播放器）
 		mutex: true,
 		// local歌词类型：0=不显示, 1=显示（需要提供 lrc 字段）, 2=显示（从 HTML 内容读取）
