@@ -7,17 +7,17 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "chivehao",
+	title: "阿豪博客小站",
 
 	// 站点副标题
-	subtitle: "阿豪的博客小站",
+	subtitle: "愿此行，终抵达群星。",
 
 	// 站点 URL
 	site_url: "https://chivehao.ikaros.run",
 
 	// 站点描述
 	description:
-		"这里是阿豪的博客小站，纪录经验纪录生活。",
+		"这里是阿豪的博客小站，纪录经验纪录生活，愿此行，终抵达群星。",
 
 	// 站点关键词
 	keywords: [
@@ -33,7 +33,8 @@ export const siteConfig: SiteConfig = {
 	// 主题色
 	themeColor: {
 		// 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		hue: 165,
+		// hue: 165,
+		hue: 250,
 		// 是否对访问者隐藏主题色选择器
 		fixed: false,
 		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
@@ -123,7 +124,7 @@ export const siteConfig: SiteConfig = {
 	// 文章列表布局配置
 	postListLayout: {
 		// 默认布局模式："list" 列表模式（单列布局），"grid" 网格模式（多列布局）
-		defaultMode: "list",
+		defaultMode: "grid",
 		// 是否允许用户切换布局
 		allowSwitch: true,
 		// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
@@ -133,14 +134,14 @@ export const siteConfig: SiteConfig = {
 			// 网格模式列数：2 或 3
 			// 2列是默认模式，在任何侧边栏配置下均可生效
 			// 3列模式仅在单侧边栏（或无侧边栏）时生效，
-			columns: 3,
+			columns: 2,
 		},
 	},
 
 	// 分页配置
 	pagination: {
 		// 每页显示的文章数量
-		postsPerPage: 10,
+		postsPerPage: 12,
 	},
 
 	// 统计分析

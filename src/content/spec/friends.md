@@ -11,7 +11,7 @@ description: "与优秀的朋友们一起成长"
 
 ```yaml
 站点名称: 阿豪博客小站
-站点描述: 一位在地球OL里开拓的无名客。
+站点描述: 愿此行，终抵达群星。
 站点链接: https://chivehao.ikaros.run
 头像链接: https://chivehao.ikaros.run/assets/images/avatar.webp
 

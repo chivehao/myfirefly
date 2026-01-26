@@ -10,12 +10,12 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// 侧边栏位置：left=左侧，both=双侧
 	// 开启双侧边栏后，右侧组件会在宽度低于1200px时隐藏
-	position: "both",
+	position: "left",
 
 	// 使用左侧单侧栏时，是否在文章详情页显示右侧边栏
 	// 当position为left时开启此项后，文章详情页将显示双侧边栏，主页等其他页面保持左侧单侧边栏
 	// 适用在只想用左侧单侧栏，但在文章详情页想用右侧栏的目录等组件的场景
-	showRightSidebarOnPostPage: true,
+	showRightSidebarOnPostPage: false,
 
 	// 左侧边栏组件配置列表
 	// 组件位置position：top=顶部，sticky=粘性定位(会跟随页面滚动)
@@ -87,32 +87,12 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			},
 		},
 		{
-			// 组件类型：广告栏组件 1
-			type: "advertisement",
-			// 是否启用该组件
-			enable: false,
-			// 组件显示顺序
-			order: 5,
-			// 组件位置
-			position: "sticky",
-			// CSS 类名
-			class: "onload-animation",
-			// 动画延迟时间
-			animationDelay: 300,
-			// 配置ID：使用第一个广告配置
-			configId: "ad1",
-		},
-	],
-
-	// 右侧边栏组件配置列表
-	rightComponents: [
-		{
 			// 组件类型：站点统计组件
 			type: "stats",
 			// 是否启用该组件
 			enable: true,
 			// 组件显示顺序
-			order: 1,
+			order: 5,
 			// 组件位置
 			position: "top",
 			// 是否在文章详情页显示
@@ -128,7 +108,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 是否启用该组件
 			enable: true,
 			// 组件显示顺序
-			order: 2,
+			order: 6,
 			// 组件位置
 			position: "sticky",
 			// 是否在文章详情页显示
@@ -144,7 +124,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			// 是否启用该组件
 			enable: true,
 			// 组件显示顺序
-			order: 3,
+			order: 7,
 			// 组件位置
 			position: "sticky",
 			// 是否在文章详情页显示
@@ -155,23 +135,91 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			animationDelay: 250,
 		},
 		{
-			// 组件类型：广告栏组件 2
+			// 组件类型：广告栏组件 1
 			type: "advertisement",
 			// 是否启用该组件
 			enable: false,
 			// 组件显示顺序
-			order: 4,
+			order: 8,
 			// 组件位置
 			position: "sticky",
-			// 是否在文章详情页显示
-			showOnPostPage: true,
 			// CSS 类名
 			class: "onload-animation",
 			// 动画延迟时间
-			animationDelay: 350,
-			// 配置ID：使用第二个广告配置
-			configId: "ad2",
+			animationDelay: 300,
+			// 配置ID：使用第一个广告配置
+			configId: "ad1",
 		},
+	],
+
+	// 右侧边栏组件配置列表
+	rightComponents: [
+		// {
+		// 	// 组件类型：站点统计组件
+		// 	type: "stats",
+		// 	// 是否启用该组件
+		// 	enable: true,
+		// 	// 组件显示顺序
+		// 	order: 1,
+		// 	// 组件位置
+		// 	position: "top",
+		// 	// 是否在文章详情页显示
+		// 	showOnPostPage: true,
+		// 	// CSS 类名
+		// 	class: "onload-animation",
+		// 	// 动画延迟时间
+		// 	animationDelay: 200,
+		// },
+		// {
+		// 	// 组件类型：日历组件
+		// 	type: "calendar",
+		// 	// 是否启用该组件
+		// 	enable: true,
+		// 	// 组件显示顺序
+		// 	order: 2,
+		// 	// 组件位置
+		// 	position: "sticky",
+		// 	// 是否在文章详情页显示
+		// 	showOnPostPage: false,
+		// 	// CSS 类名
+		// 	class: "onload-animation",
+		// 	// 动画延迟时间
+		// 	animationDelay: 250,
+		// },
+		// {
+		// 	// 组件类型：侧边栏目录组件（只在文章详情页显示）
+		// 	type: "sidebarToc",
+		// 	// 是否启用该组件
+		// 	enable: true,
+		// 	// 组件显示顺序
+		// 	order: 3,
+		// 	// 组件位置
+		// 	position: "sticky",
+		// 	// 是否在文章详情页显示
+		// 	showOnPostPage: true,
+		// 	// CSS 类名
+		// 	class: "onload-animation",
+		// 	// 动画延迟时间
+		// 	animationDelay: 250,
+		// },
+		// {
+		// 	// 组件类型：广告栏组件 2
+		// 	type: "advertisement",
+		// 	// 是否启用该组件
+		// 	enable: false,
+		// 	// 组件显示顺序
+		// 	order: 4,
+		// 	// 组件位置
+		// 	position: "sticky",
+		// 	// 是否在文章详情页显示
+		// 	showOnPostPage: true,
+		// 	// CSS 类名
+		// 	class: "onload-animation",
+		// 	// 动画延迟时间
+		// 	animationDelay: 350,
+		// 	// 配置ID：使用第二个广告配置
+		// 	configId: "ad2",
+		// },
 	],
 
 	// 默认动画配置
