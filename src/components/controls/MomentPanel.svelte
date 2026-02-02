@@ -3,8 +3,8 @@
 
     import I18nKey from "@/i18n/i18nKey";
     import {i18n} from "@/i18n/translation";
-    import {getPostUrlBySlug} from "@/utils/url-utils";
     import type {MomentPost} from "@utils/get-feeds-utils.ts";
+    import Icon from "@iconify/svelte";
 
     export let sortedPosts: MomentPost[] = [];
 
@@ -62,6 +62,21 @@
 </script>
 
 <div class="card-base px-8 py-6">
+    <!-- 页面标题和描述 -->
+    <div class="mb-4">
+        <div class="flex items-center gap-3 mb-3">
+            <div
+                    class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70"
+            >
+                <Icon icon="material-symbols:group" class="text-[1.5rem]" />
+            </div>
+            <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+                朋友圈
+            </h1>
+        </div>
+        朋友们的最近更新：
+    </div>
+
     {#each groups as group}
         <div>
             <div class="flex flex-row w-full items-center h-[3.75rem]">

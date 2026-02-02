@@ -1,11 +1,8 @@
 ---
-// src/pages/moments.astro
 import {getAllPosts, type MomentPost} from '../utils/get-feeds-utils.ts';
-import {getEnabledFriends, sidebarLayoutConfig, siteConfig} from "@/config";
+import {getEnabledFriends} from "@/config";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import type {CollectionEntry} from "astro:content";
 import MomentPanel from "@components/controls/MomentPanel.svelte";
-import ArchivePanel from "@components/controls/ArchivePanel.svelte";
 
 // 使用配置文件中的友链数据，按权重排序
 const items = getEnabledFriends()
