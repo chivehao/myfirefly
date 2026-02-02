@@ -74,7 +74,7 @@
                 朋友圈
             </h1>
         </div>
-        朋友们的最近更新：
+        朋友们的最近更新
     </div>
 
     {#each groups as group}
