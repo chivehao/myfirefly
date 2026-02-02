@@ -584,6 +584,8 @@ export type FriendLink = {
 	tags?: string[]; // 标签数组
 	weight: number; // 权重，数字越大排序越靠前
 	enabled: boolean; // 是否启用
+	subInMoments?: boolean; // 是否在朋友圈订阅
+	rssUrl?: string; // rss链接地址
 };
 
 export type FriendsPageConfig = {

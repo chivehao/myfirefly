@@ -1,0 +1,19 @@
+---
+// src/pages/moments.astro
+import {getAllPosts, type MomentPost} from '../utils/get-feeds-utils.ts';
+import {getEnabledFriends, sidebarLayoutConfig, siteConfig} from "@/config";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import type {CollectionEntry} from "astro:content";
+import MomentPanel from "@components/controls/MomentPanel.svelte";
+import ArchivePanel from "@components/controls/ArchivePanel.svelte";
+
+// 使用配置文件中的友链数据，按权重排序
+const items = getEnabledFriends()
+    .filter((f) => f && f.subInMoments && f.rssUrl);
+const feedUrls = items.map(({rssUrl}) => rssUrl as string)
+const posts: MomentPost[] = await getAllPosts(feedUrls);
+---
+<MainGridLayout title="朋友圈" description="朋友们的最近更新">
+    <MomentPanel sortedPosts={posts} client:only="svelte" />
+</MainGridLayout>
+

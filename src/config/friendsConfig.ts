@@ -16,7 +16,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "专注于ACGMN的内容管理系统(CMS)",
 		siteurl: "https://docs.ikaros.run",
 		tags: ["项目"],
-		weight: 1, // 权重，数字越大排序越靠前
+		weight: 9999, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -27,6 +27,8 @@ export const friendsConfig: FriendLink[] = [
 		tags: ["博客"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
+		subInMoments: true,
+		rssUrl: "https://blog.cuteleaf.cn/rss.xml",
 	},
 ];
 
