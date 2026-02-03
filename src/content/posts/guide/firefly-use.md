@@ -5,7 +5,6 @@ pinned: false
 description: "如何使用 Firefly 博客模板。"
 image: "https://imgbed.ikaros.run/file/firefly/1770130452653_firefly4.webp"
 category: 博客指南
-draft: false
 ---
 
 
