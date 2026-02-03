@@ -44,7 +44,7 @@ export const siteConfig: SiteConfig = {
 
 这是 GitHub 官方支持的 5 种基本类型。
 
-![GitHub](../images/github.png)
+![GitHub](https://imgbed.ikaros.run/file/firefly/1770130458310_github.webp)
 
 **基本语法**
 
@@ -165,7 +165,7 @@ export const siteConfig: SiteConfig = {
 ```
 </details>
 
-![Obsidian](../images/obsidian.png)
+![Obsidian](https://imgbed.ikaros.run/file/firefly/1770130452268_obsidian.webp)
 
 ---
 
@@ -197,7 +197,7 @@ export const siteConfig: SiteConfig = {
 ```
 </details>
 
-![VitePress](../images/vitepress.png)
+![VitePress](https://imgbed.ikaros.run/file/firefly/1770130458168_vitepress.webp)
 
 ---
 
