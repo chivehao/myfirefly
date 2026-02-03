@@ -20,6 +20,17 @@ export const friendsConfig: FriendLink[] = [
 		enabled: true, // 是否启用
 	},
 	{
+		title: "博友圈",
+		imgurl: "https://www.boyouquan.com/assets/images/sites/logo/logo-small.svg",
+		desc: "博客人的朋友圈，将一个个散落在各处的孤岛连接成一片广袤无垠的新大陆！",
+		siteurl: "https://www.boyouquan.com/home",
+		tags: ["项目"],
+		weight: 9998, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+		subInMoments: true,
+		rssUrl: "https://www.boyouquan.com/feed.xml?sort=latest",
+	},
+	{
 		title: "夏夜流萤",
 		imgurl: "https://q1.qlogo.cn/g?b=qq&nk=7618557&s=640",
 		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
