@@ -27,7 +27,7 @@ export const friendsConfig: FriendLink[] = [
 		tags: ["项目"],
 		weight: 9998, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
-		subInMoments: true,
+		subInMoments: false, // 朋友圈禁用，rss格式问题，rss-parser组件无法解析他们的rss
 		rssUrl: "https://www.boyouquan.com/feed.xml?sort=latest",
 	},
 	{
