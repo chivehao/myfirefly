@@ -231,6 +231,10 @@ enum I18nKey {
 	copyLink = "copyLink",
 	savePoster = "savePoster",
 	scanToRead = "scanToRead",
+
+	// 朋友圈
+	moments = "moments",
+	momentsDescription = "momentsDescription",
 }
 
 export default I18nKey;

@@ -239,4 +239,7 @@ export const zh_TW: Translation = {
 	[Key.copyLink]: "複製連結",
 	[Key.savePoster]: "保存海報",
 	[Key.scanToRead]: "掃碼閱讀文章",
+
+	[Key.moments]: "朋友圈",
+	[Key.momentsDescription]: "朋友們的最近更新",
 };

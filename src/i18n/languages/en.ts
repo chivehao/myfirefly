@@ -246,4 +246,7 @@ export const en: Translation = {
 	[Key.copyLink]: "Copy Link",
 	[Key.savePoster]: "Save Poster",
 	[Key.scanToRead]: "Scan to Read",
+
+	[Key.moments]: "Moments",
+	[Key.momentsDescription]: "Recent updates from friends",
 };

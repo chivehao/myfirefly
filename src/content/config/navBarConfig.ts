@@ -45,11 +45,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	links.push(LinkPreset.Friends);
 
 	// 朋友圈
-	links.push({
-		name: "朋友圈",
-		url: "/moments/",
-		icon: "fa6-brands:bandcamp",
-	})
+	links.push(LinkPreset.Moments);
 
 	// 根据配置决定是否添加留言板，在siteConfig关闭pages.guestbook时导航栏不显示留言板
 	if (siteConfig.pages.guestbook) {

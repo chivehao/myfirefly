@@ -71,10 +71,10 @@
                 <Icon icon="material-symbols:group" class="text-[1.5rem]" />
             </div>
             <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-                朋友圈
+                {i18n(I18nKey.moments)}
             </h1>
         </div>
-        朋友们的最近更新
+        {i18n(I18nKey.momentsDescription)}
     </div>
 
     {#each groups as group}

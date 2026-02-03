@@ -3,6 +3,8 @@ import {getAllPosts, type MomentPost} from '../utils/get-feeds-utils.ts';
 import {getEnabledFriends} from "@/content/config";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import MomentPanel from "@components/controls/MomentPanel.svelte";
+import {i18n} from "@i18n/translation.ts";
+import I18nKey from "@i18n/i18nKey.ts";
 
 // 使用配置文件中的友链数据，按权重排序
 const items = getEnabledFriends()
@@ -10,7 +12,7 @@ const items = getEnabledFriends()
 const feedUrls = items.map(({rssUrl}) => rssUrl as string)
 const posts: MomentPost[] = await getAllPosts(feedUrls);
 ---
-<MainGridLayout title="朋友圈" description="朋友们的最近更新">
+<MainGridLayout title={i18n(I18nKey.moments)} description={i18n(I18nKey.momentsDescription)}>
     <MomentPanel sortedPosts={posts} client:only="svelte" />
 </MainGridLayout>
 

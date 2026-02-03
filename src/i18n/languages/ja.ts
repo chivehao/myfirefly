@@ -245,4 +245,7 @@ export const ja: Translation = {
 	[Key.copyLink]: "リンクをコピー",
 	[Key.savePoster]: "ポスターを保存",
 	[Key.scanToRead]: "QRコードで読む",
+
+	[Key.moments]: "タイムライン",
+	[Key.momentsDescription]: "友人の近況アップデート",
 };

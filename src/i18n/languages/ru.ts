@@ -247,4 +247,7 @@ export const ru: Translation = {
 	[Key.copyLink]: "Копировать ссылку",
 	[Key.savePoster]: "Сохранить постер",
 	[Key.scanToRead]: "Сканируйте, чтобы прочитать",
+
+	[Key.moments]: "Моменты",
+	[Key.momentsDescription]: "Последние обновления друзей",
 };
