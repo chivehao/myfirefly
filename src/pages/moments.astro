@@ -6,7 +6,7 @@ import MomentPanel from "@components/controls/MomentPanel.svelte";
 
 // 使用配置文件中的友链数据，按权重排序
 const items = getEnabledFriends()
-    .filter((f) => f && f.subInMoments && f.rssUrl);
+    .filter((f) => f && f.enabled && f.subInMoments && f.rssUrl);
 const feedUrls = items.map(({rssUrl}) => rssUrl as string)
 const posts: MomentPost[] = await getAllPosts(feedUrls);
 ---
