@@ -36,10 +36,21 @@ export const friendsConfig: FriendLink[] = [
 		desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
 		siteurl: "https://blog.cuteleaf.cn",
 		tags: ["博客"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 8999, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 		subInMoments: true,
 		rssUrl: "https://blog.cuteleaf.cn/rss.xml",
+	},
+	{
+		title: "小游网",
+		imgurl: "https://xiaoyou66.com/medias/avatar.jpg",
+		desc: "关于, 小游网,二次元博客,个人网站,萌萌的网站",
+		siteurl: "https://xiaoyou66.com",
+		tags: ["博客"],
+		weight: 8998, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+		subInMoments: true,
+		rssUrl: "https://xiaoyou66.com/atom.xml",
 	},
 ];
 
