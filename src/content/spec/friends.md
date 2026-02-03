@@ -14,7 +14,7 @@ description: "与优秀的朋友们一起成长"
 站点描述: 愿此行，终抵达群星。
 站点链接: https://chivehao.ikaros.run
 头像链接: https://chivehao.ikaros.run/assets/images/avatar.webp
-RSS或者Atom的XXL链接: https://chivehao.ikaros.run/rss.xml
+RSS或者Atom的XML链接: https://chivehao.ikaros.run/rss.xml
 
 ```
 
@@ -34,7 +34,7 @@ RSS或者Atom的XXL链接: https://chivehao.ikaros.run/rss.xml
 站点描述：[您的站点描述]
 站点链接：[您的站点链接]
 头像链接：[您的头像链接]
-RSS或者Atom的XXL链接: [您的站点RSS或者Atom的XXL链接]
+RSS或者Atom的XML链接: [您的站点RSS或者Atom的XXL链接]
 ```
 
 
