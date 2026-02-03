@@ -89,7 +89,16 @@
                   -outline-offset-[2px] z-50 outline-3"
                     ></div>
                 </div>
-                <div class="w-[70%] md:w-[80%] transition text-left text-50">
+                <div
+                        class="hidden md:block md:w-[10%] text-left text-sm transition
+                            whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                >
+                    <div class="text-left">
+                        <strong>博文作者</strong>
+                    </div>
+
+                </div>
+                <div class="w-[60%] md:w-[70%] transition text-left text-50">
                     {group.moments.length} {i18n(group.moments.length === 1 ? I18nKey.postCount : I18nKey.postsCount)}
                 </div>
             </div>
@@ -103,7 +112,7 @@
                 >
                     <div class="flex flex-row justify-start items-center h-full">
                         <!-- date -->
-                        <div class="w-[20%] md:w-[10%] transition text-sm text-right text-50">
+                        <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
                             {formatDate(new Date(Date.parse(moment.isoDate)))}
                         </div>
 
@@ -129,7 +138,7 @@
 
                         <!-- post title -->
                         <div
-                                class="w-[70%] md:max-w-[65%] md:w-[65%] text-left font-bold
+                                class="w-[70%] md:max-w-[60%] md:w-[50%] text-left font-bold
                      group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)]
                      text-75 pr-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
                         >
@@ -138,7 +147,7 @@
 
                         <!-- post Desc -->
                         <div
-                                class="hidden md:block md:w-[15%] text-left text-sm transition
+                                class="hidden md:block md:w-[10%] text-left text-sm transition
                      whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
                         >
                             {moment.description}
