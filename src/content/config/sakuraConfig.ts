@@ -1,4 +1,4 @@
-import type { SakuraConfig } from "../types/config";
+import type { SakuraConfig } from "../../types/config.ts";
 
 export const sakuraConfig: SakuraConfig = {
 	// 是否启用樱花特效

@@ -1,7 +1,7 @@
 ---
 import fs from "node:fs";
 import path from "node:path";
-import { footerConfig, profileConfig } from "@/config";
+import { footerConfig, profileConfig } from "@/content/config";
 import { url } from "@/utils/url-utils";
 
 const currentYear = new Date().getFullYear();
@@ -13,6 +13,7 @@ if (footerConfig.enable) {
 		const footerConfigPath = path.join(
 			process.cwd(),
 			"src",
+            "content",
 			"config",
 			"FooterConfig.html",
 		);

@@ -1,4 +1,4 @@
-import type { ProfileConfig } from "../types/config";
+import type { ProfileConfig } from "../../types/config.ts";
 
 export const profileConfig: ProfileConfig = {
 	// 头像

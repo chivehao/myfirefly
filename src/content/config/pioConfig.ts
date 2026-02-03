@@ -1,4 +1,4 @@
-import type { Live2DModelConfig, SpineModelConfig } from "../types/config";
+import type { Live2DModelConfig, SpineModelConfig } from "../../types/config.ts";
 
 // Spine 看板娘配置
 export const spineModelConfig: SpineModelConfig = {

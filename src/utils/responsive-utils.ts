@@ -1,4 +1,4 @@
-import { sidebarLayoutConfig } from "../config";
+import { sidebarLayoutConfig } from "../content/config";
 import { widgetManager } from "./widget-manager";
 
 // 响应式侧边栏配置

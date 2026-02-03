@@ -1,4 +1,4 @@
-import { coverImageConfig } from "@/config/coverImageConfig";
+import { coverImageConfig } from "@/content/config/coverImageConfig";
 
 const { randomCoverImage } = coverImageConfig;
 

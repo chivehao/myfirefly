@@ -1,4 +1,4 @@
-import { siteConfig } from "../config";
+import { siteConfig } from "../content/config";
 
 export function formatDateToYYYYMMDD(date: Date): string {
 	return date.toISOString().substring(0, 10);

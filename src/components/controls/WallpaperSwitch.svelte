@@ -11,7 +11,7 @@ import { getStoredWallpaperMode, setWallpaperMode } from "@utils/setting-utils";
 import { onMount } from "svelte";
 import DropdownItem from "@/components/common/DropdownItem.svelte";
 import DropdownPanel from "@/components/common/DropdownPanel.svelte";
-import { backgroundWallpaper } from "@/config";
+import { backgroundWallpaper } from "@/content/config";
 import type { WALLPAPER_MODE } from "@/types/config";
 
 let mode: WALLPAPER_MODE = $state(backgroundWallpaper.mode);

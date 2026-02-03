@@ -1,4 +1,4 @@
-import type { ExpressiveCodeConfig } from "../types/config";
+import type { ExpressiveCodeConfig } from "../../types/config.ts";
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// 暗色主题（用于暗色模式）

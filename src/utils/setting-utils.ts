@@ -12,7 +12,7 @@ import {
 	backgroundWallpaper,
 	expressiveCodeConfig,
 	siteConfig,
-} from "../config";
+} from "../content/config";
 import { isHomePage as checkIsHomePage } from "./layout-utils";
 
 // Declare global functions
