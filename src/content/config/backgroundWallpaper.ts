@@ -24,20 +24,24 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 主页横幅文字
 		homeText: {
 			// 是否启用主页横幅文字
-			enable: false,
+			enable: true,
 			// 主页横幅主标题
-			title: "Lovely firefly!",
-			// title: "向着星辰与深渊!",
-			// 主页横幅主标题字体大小
+			// title: "Lovely firefly!",
+			title: "向着星辰与深渊",
+			// 主页横幅主标题字体大小11
 			titleSize: "3.8rem",
 			// 主页横幅副标题
 			subtitle: [
-				"In Reddened Chrysalis, I Once Rest",
-				"From Shattered Sky, I Free Fall",
-				"Amidst Silenced Stars, I Deep Sleep",
-				"Upon Lighted Fyrefly, I Soon Gaze",
-				"From Undreamt Night, I Thence Shine",
-				"In Finalized Morrow, I Full Bloom",
+				// "In Reddened Chrysalis, I Once Rest",
+				// "From Shattered Sky, I Free Fall",
+				// "Amidst Silenced Stars, I Deep Sleep",
+				// "Upon Lighted Fyrefly, I Soon Gaze",
+				// "From Undreamt Night, I Thence Shine",
+				// "In Finalized Morrow, I Full Bloom",
+				"世事洞名皆学问，人情练达即文章。  ——《红楼梦》楹联",
+				"祝愿你们的旅途处处充满了诅咒与祝福。  ——《来自深渊》黎明卿",
+				"当你重新踏上旅途之后，一定要记得旅途本身的意义。  ——《原神》温迪",
+				"愿此行，终抵群星！  ——《星穹铁道》开拓者",
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
