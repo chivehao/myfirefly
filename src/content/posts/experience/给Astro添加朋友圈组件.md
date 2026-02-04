@@ -146,10 +146,6 @@ const posts: MomentPost[] = await getAllPosts(feedUrls);
 
     export let sortedPosts: MomentPost[] = [];
 
-    const params = new URLSearchParams(window.location.search);
-    const uncategorized = params.get("uncategorized");
-
-
     interface Group {
         year: number;
         moments: MomentPost[];

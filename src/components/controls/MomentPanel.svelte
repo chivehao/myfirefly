@@ -8,17 +8,12 @@
 
     export let sortedPosts: MomentPost[] = [];
 
-    const params = new URLSearchParams(window.location.search);
-    const uncategorized = params.get("uncategorized");
-
-
     interface Group {
         year: number;
         moments: MomentPost[];
     }
 
     let groups: Group[] = [];
-
 
     function formatDate(date: Date) {
         const month = (date.getMonth() + 1).toString().padStart(2, "0");
