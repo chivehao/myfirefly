@@ -95,12 +95,12 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				icon: "fa6-brands:bilibili",
 			},
 
-			{
-				name: "Steam",
-				url: "https://steamcommunity.com/id/chivehao",
-				external: true,
-				icon: "fa6-brands:steam",
-			},
+			// {
+			// 	name: "Steam",
+			// 	url: "https://steamcommunity.com/id/chivehao",
+			// 	external: true,
+			// 	icon: "fa6-brands:steam",
+			// },
 
 			{
 				name: "米游社",
