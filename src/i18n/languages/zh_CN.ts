@@ -239,5 +239,5 @@ export const zh_CN: Translation = {
 	[Key.scanToRead]: "扫码阅读文章",
 
 	[Key.moments]: "朋友圈",
-	[Key.momentsDescription]: "这里是我的朋友们，欢迎互相访问交流",
+	[Key.momentsDescription]: "朋友们的最近更新",
 };
