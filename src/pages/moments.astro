@@ -1,10 +1,11 @@
 ---
-import {getAllPosts, type MomentPost} from '../utils/get-feeds-utils.ts';
+import {getAllPosts} from '@utils/get-feeds-utils.ts';
 import {getEnabledFriends} from "@/content/config";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import MomentPanel from "@components/controls/MomentPanel.svelte";
 import {i18n} from "@i18n/translation.ts";
 import I18nKey from "@i18n/i18nKey.ts";
+import type {MomentPost} from "@/types/moment.ts";
 
 // 使用配置文件中的友链数据，按权重排序
 const items = getEnabledFriends()

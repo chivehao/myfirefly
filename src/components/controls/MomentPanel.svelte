@@ -3,8 +3,8 @@
 
     import I18nKey from "@/i18n/i18nKey";
     import {i18n} from "@/i18n/translation";
-    import type {MomentPost} from "@utils/get-feeds-utils.ts";
     import Icon from "@iconify/svelte";
+    import type {MomentPost} from "@/types/moment.ts";
 
     export let sortedPosts: MomentPost[] = [];
 
@@ -30,7 +30,28 @@
         return tagList.map((t) => `#${t}`).join(" ");
     }
 
-    onMount(async () => {
+    /**
+     * 拉取最新的rss数据，纯客户端渲染操作，失败则不更新数据。
+     */
+    async function fetchNewsRssData() {
+        const {getEnabledFriends} = await import("@/content/config");
+        const {parseRssWithUrls} = await import('@utils/get-feeds-client-utils');
+        const items = getEnabledFriends()
+            .filter((f) => f && f.enabled && f.subInMoments && f.rssUrl);
+        const feedUrls = items.map(({rssUrl}) => rssUrl as string)
+        const posts: MomentPost[] = await parseRssWithUrls(feedUrls)
+            .catch((err)=>{
+                console.warn('拉取最新RSS数据失败，使用上次编译时的RSS数据。', err)
+                return [];
+            });
+        if (posts && posts.length > 0) {
+            sortedPosts = posts;
+            await reloadGroupFromSortedPosts();
+            console.debug("已经拉取到最新的RSS数据。")
+        }
+    }
+
+    async function reloadGroupFromSortedPosts() {
         let filteredPosts: MomentPost[] = sortedPosts;
 
         // 按发布时间倒序排序，确保不受置顶影响
@@ -58,7 +79,9 @@
         groupedPostsArray.sort((a, b) => b.year - a.year);
 
         groups = groupedPostsArray;
-    });
+    }
+
+    onMount(reloadGroupFromSortedPosts);
 </script>
 
 <div class="card-base px-8 py-6">
@@ -68,7 +91,7 @@
             <div
                     class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70"
             >
-                <Icon icon="material-symbols:group" class="text-[1.5rem]" />
+                <Icon icon="material-symbols:group" class="text-[1.5rem]"/>
             </div>
             <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
                 {i18n(I18nKey.moments)}
@@ -77,84 +100,171 @@
         {i18n(I18nKey.momentsDescription)}
     </div>
 
-    {#each groups as group}
-        <div>
-            <div class="flex flex-row w-full items-center h-[3.75rem]">
-                <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">
-                    {group.year}
-                </div>
-                <div class="w-[15%] md:w-[10%]">
-                    <div
-                            class="h-3 w-3 bg-none rounded-full outline outline-[var(--primary)] mx-auto
-                  -outline-offset-[2px] z-50 outline-3"
-                    ></div>
-                </div>
-                <div
-                        class="hidden md:block md:w-[10%] text-left text-sm transition
-                            whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
-                >
-                    <div class="text-left">
-                        <strong>博文作者</strong>
+    {#await fetchNewsRssData()}
+        <p>加载数据中...</p>
+    {:then data}
+        {#each groups as group}
+            <div>
+                <div class="flex flex-row w-full items-center h-[3.75rem]">
+                    <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">
+                        {group.year}
                     </div>
-
-                </div>
-                <div class="w-[60%] md:w-[70%] transition text-left text-50">
-                    {group.moments.length} {i18n(group.moments.length === 1 ? I18nKey.postCount : I18nKey.postsCount)}
-                </div>
-            </div>
-
-            {#each group.moments as moment}
-                <a
-                        href={moment.link}
-                        aria-label={moment.isoDate}
-                        target="_blank"
-                        class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
-                >
-                    <div class="flex flex-row justify-start items-center h-full">
-                        <!-- date -->
-                        <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
-                            {formatDate(new Date(Date.parse(moment.isoDate)))}
+                    <div class="w-[15%] md:w-[10%]">
+                        <div
+                                class="h-3 w-3 bg-none rounded-full outline outline-[var(--primary)] mx-auto
+                  -outline-offset-[2px] z-50 outline-3"
+                        ></div>
+                    </div>
+                    <div
+                            class="hidden md:block md:w-[10%] text-left text-sm transition
+                            whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                    >
+                        <div class="text-left">
+                            <strong>博文作者</strong>
                         </div>
 
-                        <!-- dot and line -->
-                        <div class="w-[15%] md:w-[10%] relative dash-line h-full flex items-center">
-                            <div
-                                    class="transition-all mx-auto w-1 h-1 rounded group-hover:h-5
+                    </div>
+                    <div class="w-[60%] md:w-[70%] transition text-left text-50">
+                        {group.moments.length} {i18n(group.moments.length === 1 ? I18nKey.postCount : I18nKey.postsCount)}
+                    </div>
+                </div>
+
+                {#each group.moments as moment}
+                    <a
+                            href={moment.link}
+                            aria-label={moment.isoDate}
+                            target="_blank"
+                            class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
+                    >
+                        <div class="flex flex-row justify-start items-center h-full">
+                            <!-- date -->
+                            <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
+                                {formatDate(new Date(Date.parse(moment.isoDate)))}
+                            </div>
+
+                            <!-- dot and line -->
+                            <div class="w-[15%] md:w-[10%] relative dash-line h-full flex items-center">
+                                <div
+                                        class="transition-all mx-auto w-1 h-1 rounded group-hover:h-5
                        bg-[oklch(0.5_0.05_var(--hue))] group-hover:bg-[var(--primary)]
                        outline outline-4 z-50
                        outline-[var(--card-bg)]
                        group-hover:outline-[var(--btn-plain-bg-hover)]
                        group-active:outline-[var(--btn-plain-bg-active)]"
-                            ></div>
-                        </div>
+                                ></div>
+                            </div>
 
-                        <!-- post author -->
-                        <div
-                                class="hidden md:block md:w-[10%] text-left text-sm transition
+                            <!-- post author -->
+                            <div
+                                    class="hidden md:block md:w-[10%] text-left text-sm transition
                             whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
-                        >
-                            [{moment.authorName}]
-                        </div>
+                            >
+                                [{moment.authorName}]
+                            </div>
 
-                        <!-- post title -->
-                        <div
-                                class="w-[70%] md:max-w-[60%] md:w-[50%] text-left font-bold
+                            <!-- post title -->
+                            <div
+                                    class="w-[70%] md:max-w-[60%] md:w-[50%] text-left font-bold
                      group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)]
                      text-75 pr-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
-                        >
-                            {moment.title}
+                            >
+                                {moment.title}
+                            </div>
+
+                            <!-- post Desc -->
+                            <div
+                                    class="hidden md:block md:w-[10%] text-left text-sm transition
+                     whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                            >
+                                {moment.description}
+                            </div>
+                        </div>
+                    </a>
+                {/each}
+            </div>
+        {/each}
+    {:catch error}
+        {#each groups as group}
+            <div>
+                <div class="flex flex-row w-full items-center h-[3.75rem]">
+                    <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">
+                        {group.year}
+                    </div>
+                    <div class="w-[15%] md:w-[10%]">
+                        <div
+                                class="h-3 w-3 bg-none rounded-full outline outline-[var(--primary)] mx-auto
+                  -outline-offset-[2px] z-50 outline-3"
+                        ></div>
+                    </div>
+                    <div
+                            class="hidden md:block md:w-[10%] text-left text-sm transition
+                            whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                    >
+                        <div class="text-left">
+                            <strong>博文作者</strong>
                         </div>
 
-                        <!-- post Desc -->
-                        <div
-                                class="hidden md:block md:w-[10%] text-left text-sm transition
-                     whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
-                        >
-                            {moment.description}
-                        </div>
                     </div>
-                </a>
-            {/each}
-        </div>
-    {/each}
+                    <div class="w-[60%] md:w-[70%] transition text-left text-50">
+                        {group.moments.length} {i18n(group.moments.length === 1 ? I18nKey.postCount : I18nKey.postsCount)}
+                    </div>
+                </div>
+
+                {#each group.moments as moment}
+                    <a
+                            href={moment.link}
+                            aria-label={moment.isoDate}
+                            target="_blank"
+                            class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
+                    >
+                        <div class="flex flex-row justify-start items-center h-full">
+                            <!-- date -->
+                            <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
+                                {formatDate(new Date(Date.parse(moment.isoDate)))}
+                            </div>
+
+                            <!-- dot and line -->
+                            <div class="w-[15%] md:w-[10%] relative dash-line h-full flex items-center">
+                                <div
+                                        class="transition-all mx-auto w-1 h-1 rounded group-hover:h-5
+                       bg-[oklch(0.5_0.05_var(--hue))] group-hover:bg-[var(--primary)]
+                       outline outline-4 z-50
+                       outline-[var(--card-bg)]
+                       group-hover:outline-[var(--btn-plain-bg-hover)]
+                       group-active:outline-[var(--btn-plain-bg-active)]"
+                                ></div>
+                            </div>
+
+                            <!-- post author -->
+                            <div
+                                    class="hidden md:block md:w-[10%] text-left text-sm transition
+                            whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                            >
+                                [{moment.authorName}]
+                            </div>
+
+                            <!-- post title -->
+                            <div
+                                    class="w-[70%] md:max-w-[60%] md:w-[50%] text-left font-bold
+                     group-hover:translate-x-1 transition-all group-hover:text-[var(--primary)]
+                     text-75 pr-8 whitespace-nowrap overflow-ellipsis overflow-hidden"
+                            >
+                                {moment.title}
+                            </div>
+
+                            <!-- post Desc -->
+                            <div
+                                    class="hidden md:block md:w-[10%] text-left text-sm transition
+                     whitespace-nowrap overflow-ellipsis overflow-hidden text-30"
+                            >
+                                {moment.description}
+                            </div>
+                        </div>
+                    </a>
+                {/each}
+            </div>
+        {/each}
+    {/await}
+
+
 </div>
