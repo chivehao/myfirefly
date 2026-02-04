@@ -59,21 +59,54 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	links.push(...(siteConfig.pages.bangumi ? [LinkPreset.Bangumi] : []));
 
 	// 关于及其子菜单
-	// links.push({
-	// 	name: "关于",
-	// 	url: "/content/",
-	// 	icon: "material-symbols:info",
-	// 	children: [
-	// 		// 根据配置决定是否添加赞助，在siteConfig关闭pages.sponsor时导航栏不显示赞助
-	// 		...(siteConfig.pages.sponsor ? [LinkPreset.Sponsor] : []),
-	//
-	// 		// 关于页面
-	// 		LinkPreset.About,
-	//
-	// 		// 根据配置决定是否添加番组计划，在siteConfig关闭pages.bangumi时导航栏不显示番组计划
-	// 		...(siteConfig.pages.bangumi ? [LinkPreset.Bangumi] : []),
-	// 	],
-	// });
+	links.push({
+		name: "关联链接",
+		url: "#",
+		icon: "material-symbols:info",
+		children: [
+			{
+				name: "GitHub",
+				url: "https://github.com/chivehao",
+				external: true,
+				icon: "fa6-brands:github",
+			},
+
+			{
+				name: "番组计划",
+				url: "https://bgm.tv/user/liguohaocn",
+				external: true,
+				icon: "streamline-logos:bilibili-logo-solid",
+			},
+
+			{
+				name: "Bilibili",
+				url: "https://space.bilibili.com/3546953776368460",
+				external: true,
+				icon: "fa6-brands:bilibili",
+			},
+
+			{
+				name: "Steam",
+				url: "https://steamcommunity.com/id/chivehao",
+				external: true,
+				icon: "fa6-brands:steam",
+			},
+
+			{
+				name: "米游社",
+				url: "https://www.miyoushe.com/sr/accountCenter/postList?id=159893568",
+				external: true,
+				icon: "mdi:rabbit-variant-outline",
+			},
+
+			{
+				name: "森空岛",
+				url: "https://www.skland.com/profile?id=3827236787499",
+				external: true,
+				icon: "mdi:rabbit-variant",
+			},
+		],
+	});
 
 	// 仅返回链接，其它导航搜索相关配置在模块顶层常量中独立导出
 	return { links } as NavBarConfig;
