@@ -59,6 +59,9 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 	links.push(...(siteConfig.pages.bangumi ? [LinkPreset.Bangumi] : []));
 
 	// 关于及其子菜单
+	// 访问https://icones.js.org/ 获取图标代码，
+	// 如果想使用尚未包含相应的图标集，则需要安装它
+	// `pnpm add @iconify-json/<icon-set-name>`
 	links.push({
 		name: "关联链接",
 		url: "#",
@@ -76,6 +79,13 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				url: "https://bgm.tv/user/liguohaocn",
 				external: true,
 				icon: "streamline-logos:bilibili-logo-solid",
+			},
+
+			{
+				name: "网易云音乐",
+				url: "https://music.163.com/#/user?id=425506154",
+				external: true,
+				icon: "mingcute:netease-music-fill",
 			},
 
 			{
