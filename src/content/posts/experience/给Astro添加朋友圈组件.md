@@ -6,9 +6,11 @@ tags: ["Astro"]
 image: 'https://imgbed.ikaros.run/file/posts/1770208136696_20260204202844411.png'
 category: '经验总结'
 ---
+
 :::note
 朋友圈的RSS数据是每次构建时获取的，并不是最新的，如果需要最新的数据，你可能需要重新构建下。
 :::
+
 # 定义朋友圈文章类型
 ```typescript
 // src/types/moment.ts
