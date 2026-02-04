@@ -9,7 +9,7 @@ category: '经验总结'
 :::note
 朋友圈的RSS数据是每次构建时获取的，并不是最新的，如果需要最新的数据，你可能需要重新构建下。
 :::
-## 定义朋友圈文章类型
+# 定义朋友圈文章类型
 ```typescript
 // src/types/moment.ts
 // 定义单条朋友圈动态的类型
@@ -24,7 +24,7 @@ export interface MomentPost {
 }
 ```
 
-## 工具类
+# 工具类
 这里使用了一个rss解析库，使用如下命令添加。
 ```shell
 pnpm add rss-parser
@@ -72,7 +72,7 @@ export async function getAllPosts(feedUrls: string[]): Promise<MomentPost[]> {
 
 ```
 
-## 配置修改
+# 配置修改
 你得有地方配置，建议直接在友情链接的类型定义里添加属性，找到你的友情链接类型定义。
 ```typescript
 // src/types/config.ts
@@ -109,7 +109,7 @@ export const friendsConfig: FriendLink[] = [
 ];
 ```
 
-## 页面
+# 页面
 
 ```text
 // src/pages/moments.astro
@@ -133,7 +133,7 @@ const posts: MomentPost[] = await getAllPosts(feedUrls);
 </MainGridLayout>
 ```
 
-## 组件
+# 组件
 ```text
 // src/components/controls/MomentPanel.svelte
 <script lang="ts">
@@ -296,7 +296,7 @@ const posts: MomentPost[] = await getAllPosts(feedUrls);
     
 </div>
 ```
-## 本地测试
+# 本地测试
 ```shell
 pnpm dev
 ```
