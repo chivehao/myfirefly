@@ -168,25 +168,34 @@ const posts: MomentPost[] = await getAllPosts(feedUrls);
         return tagList.map((t) => `#${t}`).join(" ");
     }
 
-    /**
-     * 拉取最新的rss数据，纯客户端渲染操作，失败则不更新数据。
-     */
-    async function fetchNewsRssData() {
-        const {getEnabledFriends} = await import("@/content/config");
-        const {parseRssWithUrls} = await import('@utils/get-feeds-client-utils');
-        const items = getEnabledFriends()
-            .filter((f) => f && f.enabled && f.subInMoments && f.rssUrl);
-        const feedUrls = items.map(({rssUrl}) => rssUrl as string)
-        const posts: MomentPost[] = await parseRssWithUrls(feedUrls)
-            .catch((err)=>{
-                console.warn('拉取最新RSS数据失败，使用上次编译时的RSS数据。', err)
-                return [];
-            });
-        if (posts && posts.length > 0) {
-            sortedPosts = posts;
-            await reloadGroupFromSortedPosts();
-            console.debug("已经拉取到最新的RSS数据。")
-        }
+    async function reloadGroupFromSortedPosts() {
+        let filteredPosts: MomentPost[] = sortedPosts;
+
+        // 按发布时间倒序排序，确保不受置顶影响
+        filteredPosts = filteredPosts
+            .slice()
+            .sort((a, b) => Date.parse(b.isoDate) - Date.parse(a.isoDate));
+
+        const grouped = filteredPosts.reduce(
+            (acc, post) => {
+                const year = new Date(Date.parse(post.isoDate)).getFullYear();
+                if (!acc[year]) {
+                    acc[year] = [];
+                }
+                acc[year].push(post);
+                return acc;
+            },
+            {} as Record<number, MomentPost[]>,
+        );
+
+        const groupedPostsArray = Object.keys(grouped).map((yearStr) => ({
+            year: Number.parseInt(yearStr, 10),
+            moments: grouped[Number.parseInt(yearStr, 10)],
+        }));
+
+        groupedPostsArray.sort((a, b) => b.year - a.year);
+
+        groups = groupedPostsArray;
     }
 
     onMount(reloadGroupFromSortedPosts);
