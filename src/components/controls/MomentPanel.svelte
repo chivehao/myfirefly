@@ -5,8 +5,12 @@
     import {i18n} from "@/i18n/translation";
     import Icon from "@iconify/svelte";
     import type {MomentPost} from "@/types/moment.ts";
+    import {formatDateI18nWithTime} from "@utils/date-utils.ts";
 
     export let sortedPosts: MomentPost[] = [];
+
+    // 获取构建时间
+    const buildTime = formatDateI18nWithTime(new Date());
 
     interface Group {
         year: number;
@@ -71,7 +75,12 @@
                 {i18n(I18nKey.moments)}
             </h1>
         </div>
-        {i18n(I18nKey.momentsDescription)}
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {i18n(I18nKey.momentsDescription)}
+        </p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2">
+            {i18n(I18nKey.momentsLastUpdated)} {buildTime}
+        </p>
     </div>
 
 

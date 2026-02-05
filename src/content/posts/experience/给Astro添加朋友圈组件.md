@@ -145,8 +145,12 @@ const posts: MomentPost[] = await getAllPosts(feedUrls);
     import {i18n} from "@/i18n/translation";
     import Icon from "@iconify/svelte";
     import type {MomentPost} from "@/types/moment.ts";
+    import {formatDateI18nWithTime} from "@utils/date-utils.ts";
 
     export let sortedPosts: MomentPost[] = [];
+
+    // 获取构建时间
+    const buildTime = formatDateI18nWithTime(new Date());
 
     interface Group {
         year: number;
@@ -212,7 +216,13 @@ const posts: MomentPost[] = await getAllPosts(feedUrls);
                 朋友圈
             </h1>
         </div>
-        朋友们最近的更新
+        
+        <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            朋友们最近的更新
+        </p>
+        <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2">
+            数据更新于 {buildTime}
+        </p>
     </div>
 
     {#each groups as group}

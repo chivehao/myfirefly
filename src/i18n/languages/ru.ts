@@ -250,4 +250,5 @@ export const ru: Translation = {
 
 	[Key.moments]: "Моменты",
 	[Key.momentsDescription]: "Последние обновления друзей",
+	[Key.momentsLastUpdated]: "Данные обновлены",
 };

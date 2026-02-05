@@ -242,4 +242,5 @@ export const zh_TW: Translation = {
 
 	[Key.moments]: "朋友圈",
 	[Key.momentsDescription]: "朋友們的最近更新",
+	[Key.momentsLastUpdated]: "資料更新於",
 };

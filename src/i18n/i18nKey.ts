@@ -235,6 +235,7 @@ enum I18nKey {
 	// 朋友圈
 	moments = "moments",
 	momentsDescription = "momentsDescription",
+	momentsLastUpdated = "momentsLastUpdated",
 }
 
 export default I18nKey;

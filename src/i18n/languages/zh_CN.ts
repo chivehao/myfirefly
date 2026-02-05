@@ -240,4 +240,5 @@ export const zh_CN: Translation = {
 
 	[Key.moments]: "朋友圈",
 	[Key.momentsDescription]: "朋友们的最近更新",
+	[Key.momentsLastUpdated]: "数据更新于",
 };

@@ -248,4 +248,5 @@ export const ja: Translation = {
 
 	[Key.moments]: "タイムライン",
 	[Key.momentsDescription]: "友人の近況アップデート",
+	[Key.momentsLastUpdated]: "データ更新日時",
 };

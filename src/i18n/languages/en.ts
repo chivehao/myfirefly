@@ -249,4 +249,5 @@ export const en: Translation = {
 
 	[Key.moments]: "Moments",
 	[Key.momentsDescription]: "Recent updates from friends",
+	[Key.momentsLastUpdated]: "Data updated on",
 };
