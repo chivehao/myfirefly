@@ -81,12 +81,12 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 				icon: "streamline-logos:bilibili-logo-solid",
 			},
 
-			{
-				name: "网易云音乐",
-				url: "https://music.163.com/#/user?id=425506154",
-				external: true,
-				icon: "mingcute:netease-music-fill",
-			},
+			// {
+			// 	name: "网易云音乐",
+			// 	url: "https://music.163.com/#/user?id=425506154",
+			// 	external: true,
+			// 	icon: "mingcute:netease-music-fill",
+			// },
 
 			{
 				name: "Bilibili",
