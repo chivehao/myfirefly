@@ -53,17 +53,6 @@ export const friendsConfig: FriendLink[] = [
 		rssUrl: "https://xiaoyou66.com/atom.xml",
 	},
 	{
-		title: "拾三月",
-		imgurl: "https://img.nw177.cn/blog/100.assets/avatar.webp",
-		desc: "终不似，少年游！",
-		siteurl: "https://blog.nw177.cn",
-		tags: ["博客"],
-		weight: 8997, // 权重，数字越大排序越靠前
-		enabled: true, // 是否启用
-		subInMoments: false,
-		rssUrl: "https://blog.nw177.cn/feed.rss",
-	},
-	{
 		title: "YuQi",
 		imgurl: "https://yqamm.pages.dev/_astro/avatar.CAdfbZR8_w6po1.webp",
 		desc: "欲买桂花同载酒，终不似少年游。",
