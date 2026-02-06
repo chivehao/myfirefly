@@ -236,6 +236,16 @@ enum I18nKey {
 	moments = "moments",
 	momentsDescription = "momentsDescription",
 	momentsLastUpdated = "momentsLastUpdated",
+
+	// 日记页面
+	diary = "diary",
+	diarySubtitle = "diarySubtitle",
+	diaryCount = "diaryCount",
+	diaryReply = "diaryReply",
+	diaryTips = "diaryTips",
+	diaryMinutesAgo = "diaryMinutesAgo",
+	diaryHoursAgo = "diaryHoursAgo",
+	diaryDaysAgo = "diaryDaysAgo",
 }
 
 export default I18nKey;

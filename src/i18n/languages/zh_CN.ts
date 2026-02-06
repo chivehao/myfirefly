@@ -241,4 +241,15 @@ export const zh_CN: Translation = {
 	[Key.moments]: "朋友圈",
 	[Key.momentsDescription]: "朋友们的最近更新",
 	[Key.momentsLastUpdated]: "数据更新于",
+
+	// 日记页面
+	[Key.diary]: "日记",
+	[Key.diarySubtitle]: "随时随地，分享生活",
+	[Key.diaryCount]: "条短文",
+	[Key.diaryReply]: "回复",
+	[Key.diaryTips]: "只展示最近30条日记",
+	[Key.diaryMinutesAgo]: "分钟前",
+	[Key.diaryHoursAgo]: "小时前",
+	[Key.diaryDaysAgo]: "天前",
+
 };

@@ -22,6 +22,10 @@ export type {
 	WidgetComponentConfig,
 	WidgetComponentType,
 } from "../../types/config.ts";
+// 类型导出
+export type {
+    DiaryConfig,
+} from "../../types/diary.ts";
 export { adConfig1, adConfig2 } from "./adConfig.ts"; // 广告配置
 export { announcementConfig } from "./announcementConfig.ts"; // 公告配置
 // 样式配置
@@ -45,3 +49,4 @@ export { sidebarLayoutConfig } from "./sidebarConfig.ts"; // 侧边栏布局配�
 // 核心配置
 export { siteConfig } from "./siteConfig.ts"; // 站点基础配置
 export { sponsorConfig } from "./sponsorConfig.ts"; // 赞助配置
+export { diaryConfig } from "./diary.config.ts";
