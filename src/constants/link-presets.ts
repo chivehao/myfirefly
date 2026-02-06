@@ -43,4 +43,9 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/moments/",
 		icon: "fa6-brands:bandcamp",
 	},
+	[LinkPreset.Diary]: {
+		name: i18n(I18nKey.diary),
+		url: "/diary/",
+		icon: "mingcute:diary-fill",
+	},
 };

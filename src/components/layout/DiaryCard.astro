@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import Markdown from "@components/common/Markdown.astro";
+
+interface Props {
+    diary: CollectionEntry<"diaries">;
+}
+const { diary} = Astro.props;
+const { Content } = await render(diary);
+---
+<div class="content-limit">
+    <Markdown class="markdown-content onload-animation">
+        <Content />
+    </Markdown>
+</div>
+
+<style>
+  .content-limit {
+      max-height: 23.5em; /* 3 行 × line-height 1.5 */
+      overflow: hidden;
+  }
+</style>

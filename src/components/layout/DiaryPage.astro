@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import DiaryCard from "@components/layout/DiaryCard.astro";
+
+const { diaries } = Astro.props;
+
+// 类型别名避免Fragment语法问题
+type DiaryEntry = CollectionEntry<"diaries">;
+
+const dispalyDiaries = diaries.slice(0, 3);
+---
+
+<div
+        class="scroll-container"
+>
+    {
+        dispalyDiaries.map((diary: DiaryEntry) => (
+                <div class="scroll-item">
+                    <DiaryCard
+                            diary={diary}
+                    />
+                </div>
+
+        ))
+    }
+</div>
+
+<style>
+    .scroll-container {
+        display: flex;
+        overflow-x: auto;   /* 横向滚动 */
+        gap: 10px;
+        padding: 10px;
+        background: #fff;
+        border-radius: 5px;
+        //scrollbar-width: none; /* 'auto' | 'thin' | 'none' */
+        //scrollbar-color:  #32c5ef #f1f1f1; /* 滑块颜色 轨道颜色 */
+    }
+
+    .scroll-item {
+        flex: 0 0 auto;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.39);
+        border-radius: 10px;
+        white-space: normal; /* 允许换行 */
+        width: 32%;
+        max-width: 27em;    /* 可选：限制最大宽度 */
+        max-height: 16em;
+        box-shadow: 0 0 1px rgba(0,0,0,0.5); /* 黑色，模糊1px */
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
+    }
+    .scroll-item:hover {
+        box-shadow: 0 0 5px rgba(0,0,0,0.5); /* 黑色，模糊5px */
+    }
+</style>

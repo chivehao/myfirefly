@@ -5,7 +5,8 @@ import {
 	type NavBarSearchConfig,
 	NavBarSearchMethod,
 } from "../../types/config.ts";
-import { siteConfig } from "./siteConfig.ts";
+import {diaryConfig} from "./diary.config.ts";
+import {siteConfig} from "./siteConfig.ts";
 
 // 根据页面开关动态生成导航栏配置
 const getDynamicNavBarConfig = (): NavBarConfig => {
@@ -14,56 +15,47 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		// 主页
 		LinkPreset.Home,
 
+		// 动态/日记
+		...(diaryConfig.enable ? [LinkPreset.Diary] : []),
+
 		// 归档
 		LinkPreset.Archive,
 	];
 
-	// 自定义导航栏链接,并且支持多级菜单
-	// links.push({
-	// 	name: "链接",
-	// 	url: "/links/",
-	// 	icon: "material-symbols:link",
-	//
-	// 	// 子菜单
-	// 	children: [
-	// 		{
-	// 			name: "GitHub",
-	// 			url: "https://github.com/chivehao",
-	// 			external: true,
-	// 			icon: "fa6-brands:github",
-	// 		},
-	// 		{
-	// 			name: "Bilibili",
-	// 			url: "https://space.bilibili.com/3546953776368460",
-	// 			external: true,
-	// 			icon: "fa6-brands:bilibili",
-	// 		},
-	// 	],
-	// });
+	// 关于我
+	links.push({
+		name: "我的",
+		url: "#",
+		icon: "material-symbols:person",
+		children: [
+			// 关于页面
+			LinkPreset.About,
+			// 根据配置决定是否添加留言板，在siteConfig关闭pages.guestbook时导航栏不显示留言板
+			...(siteConfig.pages.guestbook ? [LinkPreset.Guestbook] : []),
+			// 根据配置决定是否添加番组计划，在siteConfig关闭pages.bangumi时导航栏不显示番组计划
+			...(siteConfig.pages.bangumi ? [LinkPreset.Bangumi] : []),
+		],
+	});
 
-	// 友链
-	links.push(LinkPreset.Friends);
-
-	// 朋友圈
-	links.push(LinkPreset.Moments);
-
-	// 根据配置决定是否添加留言板，在siteConfig关闭pages.guestbook时导航栏不显示留言板
-	if (siteConfig.pages.guestbook) {
-		links.push(LinkPreset.Guestbook);
-	}
-
-	// 关于页面
-	links.push(LinkPreset.About);
-
-	// 根据配置决定是否添加番组计划，在siteConfig关闭pages.bangumi时导航栏不显示番组计划
-	links.push(...(siteConfig.pages.bangumi ? [LinkPreset.Bangumi] : []));
+	// 朋友们
+	links.push({
+		name: "朋友",
+		url: "#",
+		icon: "material-symbols:group",
+		children: [
+			// 友链
+			LinkPreset.Friends,
+			// 朋友圈
+			LinkPreset.Moments,
+		],
+	});
 
 	// 关于及其子菜单
 	// 访问https://icones.js.org/ 获取图标代码，
 	// 如果想使用尚未包含相应的图标集，则需要安装它
 	// `pnpm add @iconify-json/<icon-set-name>`
 	links.push({
-		name: "关联链接",
+		name: "链接",
 		url: "#",
 		icon: "material-symbols:info",
 		children: [

@@ -8,7 +8,7 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "strictNullChecks": true,
-    "allowJs": false,
+    "allowJs": true,
     "declaration": true,
     "plugins": [
       {

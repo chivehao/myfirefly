@@ -2,9 +2,11 @@
 import type { GetStaticPaths } from "astro";
 import Pagination from "@/components/common/Pagination.astro";
 import PostPage from "@/components/layout/PostPage.astro";
-import { siteConfig } from "@/content/config";
+import {diaryConfig, siteConfig} from "@/content/config";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@/utils/content-utils";
+import {getSortedPosts} from "@/utils/content-utils";
+import DiaryPage from "@components/layout/DiaryPage.astro";
+import {getDiaries} from "@utils/content-utils.ts";
 export const getStaticPaths = (async ({ paginate }) => {
 	const allBlogPosts = await getSortedPosts();
 	// 使用配置中的文章数量
@@ -16,9 +18,18 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 
 const len = page.data.length;
+
+const diaries = await getDiaries();
 ---
 
 <MainGridLayout>
+  <!--日记列表-->
+  {diaryConfig.enable && diaryConfig.displayInHome && diaries && diaries.length > 0 && (
+      <DiaryPage diaries={diaries}/>
+      <br />
+  )}
+
+  <!--文章列表-->
   <PostPage page={page} />
   {
     page.total > page.size && (

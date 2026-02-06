@@ -1,10 +1,13 @@
 ---
 import Icon from "@components/common/Icon.astro";
 import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
+import {i18n} from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-import { diaryConfig } from "@/content/config";
-import {getDiaryList, getDiaryStats} from "@/types/diary.ts";
+import {diaryConfig} from "@/content/config";
+import {type DiaryItem} from "@/types/diary.ts";
+import {getDiaries} from "@utils/content-utils.ts";
+import {render} from "astro:content";
+import Markdown from "@components/common/Markdown.astro";
 
 
 // 检查日记页面是否启用
@@ -13,11 +16,24 @@ if (!diaryConfig.enable) {
 }
 
 // 获取日记数据
-const moments = getDiaryList();
-const diaryStats = getDiaryStats();
+const diaries = await getDiaries();
+const moments: DiaryItem[] = [];
+for (const diary of diaries) {
+    const { Content } = await render(diary);
+    moments.push({
+        id: diary.id,
+        content: Content,
+        date: diary.filePath as string,
+    });
+}
+
 
 // 时间格式化函数
 function formatTime(dateString: string): string {
+    // src/content/diaries/2026-02-06.md
+    // 获取日期
+    dateString = dateString.substring(dateString.lastIndexOf('/') + 1, dateString.lastIndexOf('.'));
+
     var TG = 8;
     if (diaryConfig.utcTimeZone >= -12 && diaryConfig.utcTimeZone <= 12)
         TG = diaryConfig.utcTimeZone;
@@ -53,7 +69,7 @@ function formatTime(dateString: string): string {
                         <div
                                 class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70"
                         >
-                            <Icon icon="material-symbols:group" class="text-[1.5rem]" />
+                            <Icon icon="material-symbols:group" class="text-[1.5rem]"/>
 
                         </div>
                         <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
@@ -70,28 +86,11 @@ function formatTime(dateString: string): string {
                     <div class="timeline-list space-y-4">
                         {moments.map((moment, index) => (
                                 <div class="moment-item card-base-daily p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
-                                    <div class="moment-content">
-                                        <p class="moment-text text-sm md:text-base lg:text-lg text-90 leading-relaxed mb-3 md:mb-4">{moment.content}</p>
+                                    <Markdown class="markdown-content onload-animation">
+                                        <moment.content/>
+                                    </Markdown>
 
-                                        {moment.images && moment.images.length > 0 && (
-                                                <div class="diary-images grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
-                                                    {moment.images.map((image, _index) => (
-                                                            <div class="image-item relative rounded-md overflow-hidden aspect-square cursor-pointer hover:scale-105 transition-transform">
-                                                                <a href="javascript:void(0)" data-src={image} data-fancybox={`gallery-${index}-${_index}`} class="block w-full h-full">
-                                                                    <img
-                                                                            src={image}
-                                                                            alt="diary moment image"
-                                                                            class="w-full h-full object-cover"
-                                                                            loading="lazy"
-                                                                    />
-                                                                </a>
-                                                            </div>
-                                                    ))}
-                                                </div>
-                                        )}
-                                    </div>
-
-                                    <hr class="moment-divider border-t border-[var(--line-divider)] my-3 md:my-4" />
+                                    <hr class="moment-divider border-t border-[var(--line-divider)] my-3 md:my-4"/>
 
                                     <div class="moment-footer flex justify-between items-center">
                                         <div class="moment-time flex items-center gap-1.5 text-75 text-xs md:text-sm lg:text-base">

@@ -117,3 +117,24 @@ export async function getCategoryList(): Promise<Category[]> {
 	}
 	return ret;
 }
+
+async function getRawDiaries() {
+	const allDiaries = await getCollection("diaries", ({ data }) => {
+		return true;
+	});
+	const sorted = allDiaries.sort((d1, d2) => {
+		// @ts-ignore
+		const dateString1 = d1.filePath.substring(d1.filePath.lastIndexOf('/') + 1, d1.filePath.lastIndexOf('.'));
+		const t1 = new Date(dateString1);
+		// @ts-ignore
+		const dateString2 = d2.filePath.substring(d2.filePath.lastIndexOf('/') + 1, d2.filePath.lastIndexOf('.'));
+		const t2 = new Date(dateString2);
+		// @ts-ignore
+		return t1 > t2  ? -1 : 1; // 按时间从新到旧，新的在前面。
+	});
+	return sorted;
+}
+
+export async function getDiaries() {
+	return await getRawDiaries();
+}
