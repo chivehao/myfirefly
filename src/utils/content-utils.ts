@@ -119,9 +119,7 @@ export async function getCategoryList(): Promise<Category[]> {
 }
 
 async function getRawDiaries() {
-	const allDiaries = await getCollection("diaries", ({ data }) => {
-		return true;
-	});
+	const allDiaries = await getCollection("diaries");
 	const sorted = allDiaries.sort((d1, d2) => {
 		// @ts-ignore
 		const dateString1 = d1.filePath.substring(d1.filePath.lastIndexOf('/') + 1, d1.filePath.lastIndexOf('.'));
