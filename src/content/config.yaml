@@ -1,7 +1,0 @@
-# 日记配置 @see src/types/diary.ts
-diaryConfig:
-  enable: true
-  utcTimeZone: 8
-  displayInHome: true
-  comment: true
-
