@@ -1,4 +1,4 @@
-import {siteConfig} from "../content/config";
+import {diaryConfig, siteConfig} from "../content/config";
 import {i18n} from "@i18n/translation.ts";
 import I18nKey from "@i18n/i18nKey.ts";
 
@@ -113,10 +113,22 @@ export function formatTimeAgoStr(dateString: string): string {
     // 获取日期
     const date = parseDateFromPath(dateString);
 
+    var TG = 8;
+    if (diaryConfig.utcTimeZone >= -12 && diaryConfig.utcTimeZone <= 12)
+        TG = diaryConfig.utcTimeZone;
+    const timeGap = TG;
+
     const now = new Date();
-    const diffInMinutes = Math.floor(
-        (now.getTime() - date.getTime()) / (1000 * 60),
-    );
+    let diffInMinutes = 0;
+    if (import.meta.env.PROD) {
+        diffInMinutes = Math.floor(
+            (now.getTime() + timeGap * 60 * 60 * 1000  - date.getTime()) / (1000 * 60),
+        );
+    } else {
+        diffInMinutes = Math.floor(
+            (now.getTime() - date.getTime()) / (1000 * 60),
+        );
+    }
 
     if (diffInMinutes < 60) {
         return `${diffInMinutes}${i18n(I18nKey.diaryMinutesAgo)}`;
