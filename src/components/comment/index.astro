@@ -11,7 +11,7 @@ import Twikoo from "./Twikoo.astro";
 import Waline from "./Waline.astro";
 
 interface Props {
-	post: CollectionEntry<"posts"> | CollectionEntry<"spec">;
+	post: CollectionEntry<"posts"> | CollectionEntry<"spec"> | CollectionEntry<"diaries">;
 	customPath?: string;
 }
 
@@ -21,7 +21,8 @@ const { id } = post;
 // 根据页面类型确定路径
 const slug = removeFileExtension(id);
 const path =
-	customPath || (post.collection === "posts" ? `/posts/${slug}` : `/${slug}`);
+	customPath || (post.collection === "posts" ? `/posts/${slug}` : (post.collection == "diaries" ? `/diaries/${slug}` : `/${slug}`));
+
 const url = `${Astro.site?.href}${path}`;
 
 // 强制commentService类型为string，避免类型不兼容警告

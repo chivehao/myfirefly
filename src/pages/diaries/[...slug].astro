@@ -1,10 +1,14 @@
 ---
-import { getCollection, render } from 'astro:content';
+import {getCollection, render} from 'astro:content';
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import I18nKey from "@i18n/i18nKey.ts";
 import {i18n} from "@i18n/translation.ts";
-import {parseDateStrFromPath} from "@utils/date-utils.ts";
+import {parseDateStrFromPath, parseFileNameFromPath} from "@utils/date-utils.ts";
 import {removeFileExtension} from "@utils/url-utils.ts";
+import Markdown from "@components/common/Markdown.astro";
+import Icon from "@components/common/Icon.astro";
+import {diaryConfig} from "@/content/config";
+import Comment from "@components/comment/index.astro";
 // 1. 为每个集合条目生成一个新路径
 export async function getStaticPaths() {
     const diaries = await getCollection('diaries');
@@ -13,18 +17,47 @@ export async function getStaticPaths() {
         const slug = removeFileExtension(diary.id);
         console.debug("slug", slug);
         return {
-            params: { slug },
-            props: { diary },
+            params: {slug},
+            props: {diary},
         };
     });
 }
 // 2. 对于你的模板，你可以直接从 prop 获取条目
-const { diary } = Astro.props;
-const { Content } = await render(diary);
+const {diary} = Astro.props;
+const {Content} = await render(diary);
 ---
 
 <MainGridLayout title={i18n(I18nKey.diary)} description={i18n(I18nKey.diarySubtitle)}>
-<h1>{diary.filePath}</h1>
-<hr />
-<Content />
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 py-4 md:px-6 md:py-5 relative w-full">
+            <div class="relative max-w-4xl w-full px-2 md:px-0">
+                <!-- 页面头部 -->
+                <div class="mb-4">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div
+                                class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70"
+                        >
+                            <Icon icon="material-symbols:group" class="text-[1.5rem]"/>
+
+                        </div>
+                        <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+                            {i18n(I18nKey.diary)}
+                        </h1>
+                    </div>
+                    <p class="text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        {parseDateStrFromPath(diary.filePath as string)}
+                    </p>
+                </div>
+            </div>
+
+
+            <Markdown class="card-base p-8 mb-6 relative  markdown-content onload-animation">
+                <Content/>
+            </Markdown>
+
+            {diaryConfig.comment && <Comment post={diary} />}
+        </div>
+
+
+    </div>
 </MainGridLayout>

@@ -71,6 +71,11 @@ export function parseFileNameFromPath(path: string): string {
     return path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
 }
 
+export function displayDate(path:string): string {
+    const fileName = parseFileNameFromPath(path);
+    return fileName ? fileName : path;
+}
+
 /**
  * 从路径解析文件名
  *

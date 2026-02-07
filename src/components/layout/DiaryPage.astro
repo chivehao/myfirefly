@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import DiaryCard from "@components/layout/DiaryCard.astro";
+import {parseFileNameFromPath} from "@utils/date-utils.ts";
 
 const { diaries } = Astro.props;
 
@@ -16,9 +17,11 @@ const dispalyDiaries = diaries.slice(0, 3);
     {
         dispalyDiaries.map((diary: DiaryEntry) => (
                 <div class="scroll-item">
-                    <DiaryCard
-                            diary={diary}
-                    />
+                    <a href={"/diaries/" + parseFileNameFromPath(diary.filePath as string) + "/"}>
+                        <DiaryCard
+                                diary={diary}
+                        />
+                    </a>
                 </div>
 
         ))

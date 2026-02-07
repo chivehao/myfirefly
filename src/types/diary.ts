@@ -5,6 +5,7 @@ export type DiaryConfig = {
     enable: boolean;
     displayInHome?: boolean; // 是否在首页显示
     utcTimeZone: number;
+    comment?: boolean; // 是否开启评论
 }
 
 export type DiaryItem = {
