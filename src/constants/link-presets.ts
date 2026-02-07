@@ -48,4 +48,9 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
 		url: "/diaries/",
 		icon: "mingcute:diary-fill",
 	},
+	[LinkPreset.Projects]: {
+		name: "项目",
+		url: "/projects/",
+		icon: "mingcute:diary-fill",
+	},
 };

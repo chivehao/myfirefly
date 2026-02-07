@@ -34,6 +34,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			...(siteConfig.pages.guestbook ? [LinkPreset.Guestbook] : []),
 			// 根据配置决定是否添加番组计划，在siteConfig关闭pages.bangumi时导航栏不显示番组计划
 			...(siteConfig.pages.bangumi ? [LinkPreset.Bangumi] : []),
+			LinkPreset.Projects,
 		],
 	});
 
