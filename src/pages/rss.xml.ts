@@ -38,7 +38,7 @@ export async function GET(context: APIContext) {
 		feedItems.push({
 			title: "日记: " + parseDateStrFromPath(diary.filePath as string),
 			pubDate: parseDateFromPath(diary.filePath as string),
-			description: "分享每一天",
+			description: "分享每一天: " + parseDateStrFromPath(diary.filePath as string),
 			link: url(`/diaries/${fileName}/`),
 			content: sanitizeHtml(cleanedContent, {
 				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
