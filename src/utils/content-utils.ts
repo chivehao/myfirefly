@@ -2,6 +2,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils";
+import {parseDateFromPath} from "@utils/date-utils.ts";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -121,12 +122,8 @@ export async function getCategoryList(): Promise<Category[]> {
 async function getRawDiaries() {
 	const allDiaries = await getCollection("diaries");
 	const sorted = allDiaries.sort((d1, d2) => {
-		// @ts-ignore
-		const dateString1 = d1.filePath.substring(d1.filePath.lastIndexOf('/') + 1, d1.filePath.lastIndexOf('.'));
-		const t1 = new Date(dateString1);
-		// @ts-ignore
-		const dateString2 = d2.filePath.substring(d2.filePath.lastIndexOf('/') + 1, d2.filePath.lastIndexOf('.'));
-		const t2 = new Date(dateString2);
+		const t1 = parseDateFromPath(d1.filePath as string);
+		const t2 = parseDateFromPath(d2.filePath as string);
 		// @ts-ignore
 		return t1 > t2  ? -1 : 1; // 按时间从新到旧，新的在前面。
 	});

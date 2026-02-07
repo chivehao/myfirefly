@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import I18nKey from "@i18n/i18nKey.ts";
+import {i18n} from "@i18n/translation.ts";
+import {parseDateStrFromPath} from "@utils/date-utils.ts";
+import {removeFileExtension} from "@utils/url-utils.ts";
+// 1. 为每个集合条目生成一个新路径
+export async function getStaticPaths() {
+    const diaries = await getCollection('diaries');
+    return diaries.map((diary) => {
+        // 将 id 转换为 slug（移除扩展名）以匹配路由参数
+        const slug = removeFileExtension(diary.id);
+        console.debug("slug", slug);
+        return {
+            params: { slug },
+            props: { diary },
+        };
+    });
+}
+// 2. 对于你的模板，你可以直接从 prop 获取条目
+const { diary } = Astro.props;
+const { Content } = await render(diary);
+---
+
+<MainGridLayout title={i18n(I18nKey.diary)} description={i18n(I18nKey.diarySubtitle)}>
+<h1>{diary.filePath}</h1>
+<hr />
+<Content />
+</MainGridLayout>

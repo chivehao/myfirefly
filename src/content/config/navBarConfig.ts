@@ -16,7 +16,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		LinkPreset.Home,
 
 		// 动态/日记
-		...(diaryConfig.enable ? [LinkPreset.Diary] : []),
+		...(diaryConfig.enable ? [LinkPreset.Diaries] : []),
 
 		// 归档
 		LinkPreset.Archive,

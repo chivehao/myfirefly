@@ -246,6 +246,12 @@ enum I18nKey {
 	diaryMinutesAgo = "diaryMinutesAgo",
 	diaryHoursAgo = "diaryHoursAgo",
 	diaryDaysAgo = "diaryDaysAgo",
+
+	// 日期工具类
+	// @see src/utils/date-utils.ts
+	dateMinutesAgo = "dateMinutesAgo",
+	dateHoursAgo = "dateHoursAgo",
+	dateDaysAgo = "dateDaysAgo",
 }
 
 export default I18nKey;

@@ -252,4 +252,10 @@ export const zh_TW: Translation = {
 	[Key.diaryMinutesAgo]: "分鐘前",
 	[Key.diaryHoursAgo]: "小時前",
 	[Key.diaryDaysAgo]: "天前",
+
+	// 日期工具类
+	// @see src/utils/date-utils.ts
+	[Key.dateMinutesAgo]: "分鐘前",
+	[Key.dateHoursAgo]: "小時前",
+	[Key.dateDaysAgo]: "天前",
 };

@@ -260,4 +260,9 @@ export const en: Translation = {
 	[Key.diaryMinutesAgo]: "minutes ago",
 	[Key.diaryHoursAgo]: "hours ago",
 	[Key.diaryDaysAgo]: "days ago",
+
+	// @see src/utils/date-utils.ts
+	[Key.dateMinutesAgo]: "minutes ago",
+	[Key.dateHoursAgo]: "hours ago",
+	[Key.dateDaysAgo]: "days ago",
 };

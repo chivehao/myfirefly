@@ -259,4 +259,9 @@ export const ja: Translation = {
 	[Key.diaryMinutesAgo]: "分前",
 	[Key.diaryHoursAgo]: "時間前",
 	[Key.diaryDaysAgo]: "日前",
+
+	// @see src/utils/date-utils.ts
+	[Key.dateMinutesAgo]: "分前",
+	[Key.dateHoursAgo]: "時間前",
+	[Key.dateDaysAgo]: "日前",
 };
