@@ -176,7 +176,6 @@ const SITE_LANG = "zh_CN";
 - `zh_TW` - 繁体中文
 - `en` - 英文
 - `ja` - 日文
-- `ru` - 俄文
 
 ### 配置文件结构
 
