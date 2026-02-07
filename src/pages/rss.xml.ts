@@ -3,7 +3,12 @@ import { render } from "astro:content";
 import { getContainerRenderer as getMDXRenderer } from "@astrojs/mdx";
 import rss, { type RSSFeedItem } from "@astrojs/rss";
 import {getDiaries, getSortedPosts} from "@utils/content-utils";
-import {formatDateI18nWithTime, parseDateFromPath, parseFileNameFromPath} from "@utils/date-utils";
+import {
+	formatDateI18nWithTime,
+	parseDateFromPath,
+	parseDateStrFromPath,
+	parseFileNameFromPath
+} from "@utils/date-utils";
 import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
@@ -31,7 +36,7 @@ export async function GET(context: APIContext) {
 		const cleanedContent = stripInvalidXmlChars(rawContent);
 		const fileName = parseFileNameFromPath(diary.filePath as string);
 		feedItems.push({
-			title: "日记: " + fileName,
+			title: "日记: " + parseDateStrFromPath(diary.filePath as string),
 			pubDate: parseDateFromPath(diary.filePath as string),
 			description: "分享每一天",
 			link: url(`/diaries/${fileName}/`),
