@@ -1,7 +1,7 @@
 ---
 import {Icon} from "astro-icon/components";
 import WidgetLayout from "@/components/common/WidgetLayout.astro";
-import {diaryConfig, siteConfig} from "@/content/config";
+import {siteConfig} from "@/content/config";
 import I18nKey from "@/i18n/i18nKey";
 import {i18n} from "@/i18n/translation";
 import {
@@ -10,6 +10,7 @@ import {
     getTagList,
 } from "@/utils/content-utils";
 import {parseDateFromPath} from "@utils/date-utils.ts";
+import {loadDiaryConfig} from "@/types/diary.ts";
 
 interface Props {
     class?: string;
@@ -123,6 +124,7 @@ const stats = [
         id: "last-update",
     },
 ];
+const diaryConfig = loadDiaryConfig();
 if (diaryConfig.enable && diaryConfig.displayInStatic) {
     stats.reverse();
     stats.push({

@@ -5,9 +5,10 @@ import {
 	type NavBarSearchConfig,
 	NavBarSearchMethod,
 } from "../../types/config.ts";
-import {diaryConfig} from "./diary.config.ts";
 import {siteConfig} from "./siteConfig.ts";
+import {loadDiaryConfig} from "../../types/diary.ts";
 
+const diaryConfig = loadDiaryConfig();
 // 根据页面开关动态生成导航栏配置
 const getDynamicNavBarConfig = (): NavBarConfig => {
 	// 基础导航栏链接

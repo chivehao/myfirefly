@@ -49,4 +49,3 @@ export { sidebarLayoutConfig } from "./sidebarConfig.ts"; // 侧边栏布局配�
 // 核心配置
 export { siteConfig } from "./siteConfig.ts"; // 站点基础配置
 export { sponsorConfig } from "./sponsorConfig.ts"; // 赞助配置
-export { diaryConfig } from "./diary.config.ts"; // 日记配置

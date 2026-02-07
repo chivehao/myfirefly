@@ -1,6 +1,7 @@
-import {diaryConfig, siteConfig} from "../content/config";
+import {siteConfig} from "../content/config";
 import {i18n} from "@i18n/translation.ts";
 import I18nKey from "@i18n/i18nKey.ts";
+import {loadDiaryConfig} from "@/types/diary.ts";
 
 export function formatDateToYYYYMMDD(date: Date): string {
     return date.toISOString().substring(0, 10);
@@ -114,6 +115,7 @@ export function formatTimeAgoStr(dateString: string): string {
     const date = parseDateFromPath(dateString);
 
     var TG = 8;
+    const diaryConfig = loadDiaryConfig();
     if (diaryConfig.utcTimeZone >= -12 && diaryConfig.utcTimeZone <= 12)
         TG = diaryConfig.utcTimeZone;
     const timeGap = TG;

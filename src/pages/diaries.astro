@@ -3,8 +3,7 @@ import Icon from "@components/common/Icon.astro";
 import I18nKey from "../i18n/i18nKey";
 import {i18n} from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-import {diaryConfig} from "@/content/config";
-import {type DiaryItem} from "@/types/diary.ts";
+import {type DiaryItem, loadDiaryConfig} from "@/types/diary.ts";
 import {getDiaries} from "@utils/content-utils.ts";
 import {render} from "astro:content";
 import Markdown from "@components/common/Markdown.astro";
@@ -12,6 +11,7 @@ import {formatTimeAgoStr, parseFileNameFromPath} from "@utils/date-utils.ts";
 
 
 // 检查日记页面是否启用
+const diaryConfig = loadDiaryConfig();
 if (!diaryConfig.enable) {
     return Astro.redirect("/404/");
 }
