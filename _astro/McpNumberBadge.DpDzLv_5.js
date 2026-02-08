@@ -1,4 +1,4 @@
-import{i as d,s as l}from"./lifecycle.nMMwQj6A.js";import{f as n,t as h,b as v,p as g,c as b,i as t,d as x,r as e}from"./utils.BAZLatEC.js";import{s as w}from"./render.BBSI6L7X.js";import"./navBarConfig.B0hTRct4.js";var y=n(`<div style="display: inline-block;"><a href="https://icp.gov.moe/?keyword=20260069" target="_blank" rel="nofollow"><svg xmlns="http://www.w3.org/2000/svg" width="200" height="30" viewBox="0 0 200 28" role="img" aria-label="ICP备案"><rect id="icp-bg-rect" x="0" y="0" rx="6" ry="6" width="200" height="28"></rect><path d="
+import{i as d,s as l}from"./lifecycle.nMMwQj6A.js";import{f as n,t as h,b as v,p as g,c as b,i as t,d as x,r as e}from"./utils.BAZLatEC.js";import{s as w}from"./render.BBSI6L7X.js";import"./navBarConfig.B0hTRct4.js";var y=n(`<div style="display: inline-block;"><a href="https://icp.gov.moe/?keyword=20260069" target="_blank" rel="nofollow"><svg xmlns="http://www.w3.org/2000/svg" width="160" height="30" viewBox="0 0 160 28" role="img" aria-label="ICP备案"><rect id="icp-bg-rect" x="0" y="0" rx="6" ry="6" width="160" height="28"></rect><path d="
       M14 6
       Q20 4 26 6
       V14
