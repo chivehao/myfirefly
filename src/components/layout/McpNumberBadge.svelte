@@ -10,13 +10,13 @@
 <div style="display: inline-block;">
     <a href="https://icp.gov.moe/?keyword=20260069" target="_blank" rel="nofollow">
         <svg xmlns="http://www.w3.org/2000/svg"
-             width="200"
+             width="160"
              height="30"
-             viewBox="0 0 200 28"
+             viewBox="0 0 160 28"
              role="img"
              aria-label="ICP备案">
             <!-- 背景（可删） -->
-            <rect id="icp-bg-rect" x="0" y="0" rx="6" ry="6" width="200" height="28" fill={isDarkMode ? '#4b5563' : '#f5f7fa'} />
+            <rect id="icp-bg-rect" x="0" y="0" rx="6" ry="6" width="160" height="28" fill={isDarkMode ? '#4b5563' : '#f5f7fa'} />
 
             <!-- 圆润蓝色盾牌 -->
             <path
