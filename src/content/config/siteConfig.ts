@@ -21,13 +21,17 @@ export const siteConfig: SiteConfig = {
 
 	// 站点关键词
 	keywords: [
-		"Firefly",
-		"Fuwari",
-		"Astro",
+		"Blog",
+		"blog",
+		"chivehao",
 		"ACGN",
 		"博客",
 		"静态博客",
-		"阿豪"
+		"阿豪",
+		"二次元",
+		"Firefly",
+		"Fuwari",
+		"Astro",
 	],
 
 	// 主题色
