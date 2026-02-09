@@ -203,6 +203,7 @@ export const zh_TW: Translation = {
 
 	// 站點統計
 	[Key.siteStats]: "站點統計",
+	[Key.siteStatsDiaryCount]: "日記",
 	[Key.siteStatsPostCount]: "文章",
 	[Key.siteStatsCategoryCount]: "分類",
 	[Key.siteStatsTagCount]: "標籤",
