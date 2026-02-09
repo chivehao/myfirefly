@@ -147,6 +147,7 @@ export const en: Translation = {
 	[Key.rssCopyToReader]: "Copy link to your RSS reader",
 	[Key.rssCopyLink]: "Copy Link",
 	[Key.rssLatestPosts]: "Latest Posts",
+	[Key.rssLatestDiaries]: "Latest Diaries",
 	[Key.rssWhatIsRSS]: "What is RSS?",
 	[Key.rssWhatIsRSSDescription]:
 		"RSS (Really Simple Syndication) is a standard format for publishing frequently updated content. With RSS, you can:",

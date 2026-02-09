@@ -138,6 +138,7 @@ enum I18nKey {
 	rssCopyToReader = "rssCopyToReader",
 	rssCopyLink = "rssCopyLink",
 	rssLatestPosts = "rssLatestPosts",
+	rssLatestDiaries = "rssLatestDiaries",
 	rssWhatIsRSS = "rssWhatIsRSS",
 	rssWhatIsRSSDescription = "rssWhatIsRSSDescription",
 	rssBenefit1 = "rssBenefit1",

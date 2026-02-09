@@ -146,6 +146,7 @@ export const ja: Translation = {
 	[Key.rssCopyToReader]: "RSSリンクをリーダーにコピー",
 	[Key.rssCopyLink]: "リンクをコピー",
 	[Key.rssLatestPosts]: "最新の投稿",
+	[Key.rssLatestDiaries]: "最新の日記",
 	[Key.rssWhatIsRSS]: "RSSとは？",
 	[Key.rssWhatIsRSSDescription]:
 		"RSS（Really Simple Syndication）は、頻繁に更新されるコンテンツを公開するための標準形式です。RSSを使用すると：",

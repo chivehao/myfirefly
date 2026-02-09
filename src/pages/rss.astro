@@ -1,13 +1,16 @@
 ---
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
+import {getDiaries, getSortedPosts} from "@utils/content-utils";
 import { formatDateToYYYYMMDD } from "@utils/date-utils";
 import { Icon } from "astro-icon/components";
 import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
+import {parseDateFromPath, parseDateStrFromPath, parseFileNameFromPath} from "@utils/date-utils.ts";
 
 const posts = await getSortedPosts();
 const recentPosts = posts.slice(0, 6);
+const diaries = await getDiaries();
+const recentDiaries = diaries.slice(0, 3);
 ---
 
 <MainGridLayout title={i18n(I18nKey.rss)} description={i18n(I18nKey.rssDescription)}>
@@ -51,6 +54,30 @@ const recentPosts = posts.slice(0, 6);
                         {i18n(I18nKey.rssCopyLink)}
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- 最新日记预览 -->
+        <div class="card-base rounded-[var(--radius-large)] p-6 mb-6">
+            <h2 class="text-xl font-bold text-90 mb-4 flex items-center">
+                <Icon name="material-symbols:article" class="mr-2 text-[var(--primary)]" />
+                {i18n(I18nKey.rssLatestDiaries)}
+            </h2>
+            <div class="space-y-4">
+                {recentDiaries.map((diary) => (
+                    <article class="bg-[var(--card-bg)] rounded-xl p-4 border border-[var(--line-divider)] hover:border-[var(--primary)] transition-all duration-300">
+                        <h3 class="text-lg font-semibold text-90 mb-2 hover:text-[var(--primary)] transition-colors">
+                            <a href={`/diaries/${parseFileNameFromPath(diary.filePath as string)}/`} class="hover:underline">
+                                日记: {parseDateStrFromPath(diary.filePath as string)}
+                            </a>
+                        </h3>
+                        <div class="flex items-center gap-4 text-sm text-60">
+                            <time datetime={parseDateFromPath(diary.filePath as string).toISOString()} class="text-75">
+                                {formatDateToYYYYMMDD(parseDateFromPath(diary.filePath as string))}
+                            </time>
+                        </div>
+                    </article>
+                ))}
             </div>
         </div>
 
