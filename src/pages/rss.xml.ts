@@ -13,7 +13,7 @@ import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import sanitizeHtml from "sanitize-html";
-import { siteConfig } from "@/content/config";
+import {diaryConfig, siteConfig} from "@/content/config";
 import pkg from "../../package.json";
 
 function stripInvalidXmlChars(str: string): string {
@@ -30,21 +30,24 @@ export async function GET(context: APIContext) {
 	const renderers = await loadRenderers([getMDXRenderer()]);
 	const container = await AstroContainer.create({ renderers });
 	const feedItems: RSSFeedItem[] = [];
-	for (const diary of diaries) {
-		const { Content } = await render(diary);
-		const rawContent = await container.renderToString(Content);
-		const cleanedContent = stripInvalidXmlChars(rawContent);
-		const fileName = parseFileNameFromPath(diary.filePath as string);
-		feedItems.push({
-			title: "日记: " + parseDateStrFromPath(diary.filePath as string),
-			pubDate: parseDateFromPath(diary.filePath as string),
-			description: "分享每一天: " + parseDateStrFromPath(diary.filePath as string),
-			link: url(`/diaries/${fileName}/`),
-			content: sanitizeHtml(cleanedContent, {
-				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-			}),
-		})
+	if (diaryConfig.enable && diaryConfig.add2Rss) {
+		for (const diary of diaries) {
+			const { Content } = await render(diary);
+			const rawContent = await container.renderToString(Content);
+			const cleanedContent = stripInvalidXmlChars(rawContent);
+			const fileName = parseFileNameFromPath(diary.filePath as string);
+			feedItems.push({
+				title: "日记: " + parseDateStrFromPath(diary.filePath as string),
+				pubDate: parseDateFromPath(diary.filePath as string),
+				description: "分享每一天: " + parseDateStrFromPath(diary.filePath as string),
+				link: url(`/diaries/${fileName}/`),
+				content: sanitizeHtml(cleanedContent, {
+					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+				}),
+			})
+		}
 	}
+
 	for (const post of blog) {
 		const { Content } = await render(post);
 		const rawContent = await container.renderToString(Content);

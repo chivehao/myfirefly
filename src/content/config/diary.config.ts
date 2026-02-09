@@ -5,4 +5,6 @@ export const diaryConfig: DiaryConfig = {
     utcTimeZone: 8,
     displayInHome: true,
     comment: true,
+    add2Rss: false,
+    displayInStatic: true,
 }
