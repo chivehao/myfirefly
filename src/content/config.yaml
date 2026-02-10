@@ -1,9 +1,0 @@
-# 日记配置 @see src/types/diary.ts
-diaryConfig:
-  enable: false
-  utcTimeZone: 8
-  displayInHome: true
-  comment: true
-  add2Rss: false
-  displayInStatic: true
-
