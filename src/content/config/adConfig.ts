@@ -5,11 +5,13 @@ import type { AdConfig } from "../../types/config.ts";
 // 广告配置1 - 纯图片广告（无边距）
 export const adConfig1: AdConfig = {
 	image: {
-		src: "/assets/images/d1.webp",
-		alt: "广告横幅",
-		link: "#",
+		src: "https://imgbed.ikaros.run/file/posts/1770986275989_20260213203744648.png",
+		alt: "终末地：开拓，失忆和管理员",
+		link: "https://fanqienovel.com/page/7603967738356190233",
 		external: true,
 	},
+	// title: "终末地：开拓，失忆和管理员",
+	content: "本人的明日方舟终末地同人小说",
 
 	// 是否允许关闭广告
 	closable: true,
@@ -20,10 +22,10 @@ export const adConfig1: AdConfig = {
 	// 组件内边距配置，可通过取消注释生效
 	padding: {
 		// 零边距，图片占满整个组件
-		all: "0",
+		// all: "0",
 
 		// 四边1rem边距
-		// all: "1rem",
+		all: "1rem",
 
 		// 顶部无边距
 		// top: "0",

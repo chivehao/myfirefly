@@ -36,7 +36,7 @@ export const projects: ProjectItem[] = [
         id: "endfield-novel",
         type: "novel",
         title: "终末地：开拓，失忆和管理员",
-        description: "明日方舟终末地的同人小说。",
+        description: "本人的明日方舟终末地同人小说",
         url: "https://fanqienovel.com/page/7603967738356190233",
         cover: "https://imgbed.ikaros.run/file/posts/1770730317568_20260210213150634.png",
         tags: ["长篇", "科幻", "末世", "衍生", "同人", "架空"],
