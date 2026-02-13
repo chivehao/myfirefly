@@ -11,7 +11,7 @@ export const adConfig1: AdConfig = {
 		external: true,
 	},
 	// title: "终末地：开拓，失忆和管理员",
-	content: "本人的明日方舟终末地同人小说",
+	// content: "本人的明日方舟终末地同人小说",
 
 	// 是否允许关闭广告
 	closable: true,
