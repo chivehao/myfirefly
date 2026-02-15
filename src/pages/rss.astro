@@ -10,7 +10,7 @@ import { diaryConfig} from "@/content/config";
 import DiaryPage from "@components/layout/DiaryPage.astro";
 
 const posts = await getSortedPosts();
-const recentPosts = posts.slice(0, 6);
+const recentPosts = posts.filter((post)=>post.data.pubInRss).slice(0, 6);
 const diaries = await getDiaries();
 const recentDiaries = diaries.slice(0, 3);
 ---

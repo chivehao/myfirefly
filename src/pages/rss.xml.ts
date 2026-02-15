@@ -49,6 +49,7 @@ export async function GET(context: APIContext) {
 	}
 
 	for (const post of blog) {
+		if (!post.data.pubInRss) continue;
 		const { Content } = await render(post);
 		const rawContent = await container.renderToString(Content);
 		const cleanedContent = stripInvalidXmlChars(rawContent);
