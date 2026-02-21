@@ -81,12 +81,12 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 	icon: "mingcute:netease-music-fill",
 			// },
 
-			{
-				name: "Bilibili",
-				url: "https://space.bilibili.com/3546953776368460",
-				external: true,
-				icon: "fa6-brands:bilibili",
-			},
+			// {
+			// 	name: "Bilibili",
+			// 	url: "https://space.bilibili.com/3546953776368460",
+			// 	external: true,
+			// 	icon: "fa6-brands:bilibili",
+			// },
 
 			// {
 			// 	name: "Steam",
@@ -95,19 +95,19 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 			// 	icon: "fa6-brands:steam",
 			// },
 
-			{
-				name: "米游社",
-				url: "https://www.miyoushe.com/sr/accountCenter/postList?id=159893568",
-				external: true,
-				icon: "mdi:rabbit-variant-outline",
-			},
+			// {
+			// 	name: "米游社",
+			// 	url: "https://www.miyoushe.com/sr/accountCenter/postList?id=159893568",
+			// 	external: true,
+			// 	icon: "mdi:rabbit-variant-outline",
+			// },
 
-			{
-				name: "森空岛",
-				url: "https://www.skland.com/profile?id=3827236787499",
-				external: true,
-				icon: "mdi:rabbit-variant",
-			},
+			// {
+			// 	name: "森空岛",
+			// 	url: "https://www.skland.com/profile?id=3827236787499",
+			// 	external: true,
+			// 	icon: "mdi:rabbit-variant",
+			// },
 		],
 	});
 
