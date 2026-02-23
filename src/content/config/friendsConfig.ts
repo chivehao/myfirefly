@@ -52,17 +52,18 @@ export const friendsConfig: FriendLink[] = [
 		subInMoments: true,
 		rssUrl: "https://xiaoyou66.com/atom.xml",
 	},
-	{
-		title: "YuQi",
-		imgurl: "https://yqamm.pages.dev/_astro/avatar.CAdfbZR8_w6po1.webp",
-		desc: "欲买桂花同载酒，终不似少年游。",
-		siteurl: "https://yqamm.pages.dev/",
-		tags: ["博客"],
-		weight: 8996, // 权重，数字越大排序越靠前
-		enabled: true, // 是否启用
-		subInMoments: false,
-		rssUrl: "https://yqamm.pages.dev/rss.xml",
-	},
+	// 无法访问
+	// {
+	// 	title: "YuQi",
+	// 	imgurl: "https://yqamm.pages.dev/_astro/avatar.CAdfbZR8_w6po1.webp",
+	// 	desc: "欲买桂花同载酒，终不似少年游。",
+	// 	siteurl: "https://yqamm.pages.dev/",
+	// 	tags: ["博客"],
+	// 	weight: 8996, // 权重，数字越大排序越靠前
+	// 	enabled: true, // 是否启用
+	// 	subInMoments: false,
+	// 	rssUrl: "https://yqamm.pages.dev/rss.xml",
+	// },
 ];
 
 // 获取启用的友链并按权重排序
