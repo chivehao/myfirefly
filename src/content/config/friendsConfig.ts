@@ -60,7 +60,7 @@ export const friendsConfig: FriendLink[] = [
 		tags: ["博客"],
 		weight: 8996, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
-		subInMoments: true,
+		subInMoments: false,
 		rssUrl: "https://yqamm.pages.dev/rss.xml",
 	},
 ];
