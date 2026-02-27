@@ -5,10 +5,10 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "公告",
 
 	// 公告内容
-	content: "欢迎来到我的博客！评论区已经关闭，如需留言建议直接给我发邮件。",
+	content: "本人的终末地同人小说，由番茄连载，已迁移到菠萝包连载。",
 
 	// 是否允许用户关闭公告
-	closable: true,
+	closable: false,
 
 	link: {
 		// 启用链接

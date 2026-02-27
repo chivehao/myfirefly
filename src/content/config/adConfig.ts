@@ -7,7 +7,7 @@ export const adConfig1: AdConfig = {
 	image: {
 		src: "https://imgbed.ikaros.run/file/posts/1770986275989_20260213203744648.png",
 		alt: "终末地：开拓，失忆和管理员",
-		link: "https://fanqienovel.com/page/7603967738356190233",
+		link: "#",
 		external: true,
 	},
 	// title: "终末地：开拓，失忆和管理员",
