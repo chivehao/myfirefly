@@ -58,9 +58,9 @@ const novelProjects: ProjectItem[] = projects.filter(p => p.type === "novel");
                                                 </ul>
                                         )}
                                         <footer>
-                                            {project.url && (
+                                            {project.url && '#' !== project.url ? (
                                                     <a href={project.url} class="btn" target="_blank">查看详情 →</a>
-                                            )}
+                                            ) : (<span class="disabled-btn">项目未就绪</span>)}
                                         </footer>
                                     </div>
                                 </article>
@@ -101,7 +101,6 @@ const novelProjects: ProjectItem[] = projects.filter(p => p.type === "novel");
         flex-direction: column;
         background: #f8fafc;
         transition: transform 0.2s, box-shadow 0.2s;
-        cursor: pointer;
     }
 
     .project-card:hover {
