@@ -7,7 +7,7 @@ export const adConfig1: AdConfig = {
 	image: {
 		src: "https://imgbed.ikaros.run/file/posts/1770986275989_20260213203744648.png",
 		alt: "终末地：开拓，失忆和管理员",
-		link: "#",
+		link: "https://book.sfacg.com/Novel/770359/",
 		external: true,
 	},
 	// title: "终末地：开拓，失忆和管理员",
