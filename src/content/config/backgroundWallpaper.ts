@@ -39,7 +39,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				// "From Undreamt Night, I Thence Shine",
 				// "In Finalized Morrow, I Full Bloom",
 				"世事洞名皆学问，人情练达即文章。  ——《红楼梦》楹联",
-				"庄稼种一季收一季，踏踏实实地活着本身就是令人欣喜的事。  ——《明日方舟》黍",
+				"踏踏实实地活着本身就是令人欣喜的事。  ——《明日方舟》黍",
 				"祝愿你们的旅途处处充满了诅咒与祝福。  ——《来自深渊》黎明卿",
 				"当你重新踏上旅途之后，一定要记得旅途本身的意义。  ——《原神》温迪",
 				"距离繁星更近的每一步，都是开拓的收获。  ——《星穹铁道》姬子",
