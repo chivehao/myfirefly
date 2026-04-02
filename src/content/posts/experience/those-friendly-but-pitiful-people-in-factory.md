@@ -6,19 +6,6 @@ image: 'api'
 category: '经验总结'
 ---
 
-
-# 进厂经历有感，那些友善又可悲的人们
-
-those-friendly-but-pitiful-people-in-factory
-
----
-title: 进厂经历有感，那些友善又可悲的人们
-description: '俗话说读万卷书，不如行万里路，俗话也说世事洞明皆学问。记录一次进厂打螺丝的经历感受，纯个人主观感受。'
-published: 2026-04-02
-image: 'api'
-category: '经验总结'
----
-
 ## 时间
 当前时间：2026-04-05 22:54
 
