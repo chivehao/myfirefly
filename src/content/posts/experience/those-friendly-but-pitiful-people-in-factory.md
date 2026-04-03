@@ -2,7 +2,7 @@
 title: 进厂经历有感，那些友善又可悲的人们
 published: 2026-04-02
 description: '俗话说读万卷书，不如行万里路，俗话也说世事洞明皆学问。记录一次进厂打螺丝的经历感受，纯个人主观感受。'
-image: 'api'
+image: 'https://imgbed.ikaros.run/file/posts/1775195017047_Snipaste_2026-04-03_13-40-53.png'
 category: '经验总结'
 ---
 
@@ -95,7 +95,7 @@ category: '经验总结'
 
 我个人不反对加班，项目着急连续一段时间加班，我感觉都很正常，但加班常态化我是真的接受不了。
 
-这不禁让我想起来《觉醒年代》里革命先烈李大钊同志对工人们介绍五一劳动节的由来时的《八小时之歌》 [【觉醒年代】李大钊介绍五一国际劳动节由来](https://www.bilibili.com/video/BV1L54y1j7c6)：
+这不禁让我想起来《觉醒年代》里革命先烈李大钊同志对工人们介绍五一劳动节的由来时的《八小时之歌》：
 
 > 我们要改变这个世界！
 > 
@@ -108,6 +108,10 @@ category: '经验总结'
 > 我们要闻闻花香，我们要晒晒太阳。
 > 
 > 我们争取八小时工作，八小时休息，还有八小时，留给我们自己。
+
+[【觉醒年代】李大钊介绍五一国际劳动节由来](https://www.bilibili.com/video/BV1L54y1j7c6) :
+<iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1L54y1j7c6&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" &autoplay=0> </iframe>
+
 
 我也不奢求啥真正的八小时不加班，这毕竟多多少少有些不切实际，某动发都已经差不多是厕纸了，
 
