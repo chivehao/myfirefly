@@ -4,6 +4,7 @@ published: 2026-04-02
 description: '俗话说读万卷书，不如行万里路，俗话也说世事洞明皆学问。记录一次进厂打螺丝的经历感受，纯个人主观感受。'
 image: 'https://imgbed.ikaros.run/file/posts/1775195017047_Snipaste_2026-04-03_13-40-53.png'
 category: '经验总结'
+draft: true
 ---
 
 ## 前言
