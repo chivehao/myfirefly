@@ -69,7 +69,7 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 
 			{
 				name: "番组计划",
-				url: "https://bgm.tv/user/liguohaocn",
+				url: "https://bgm.tv/user/648272",
 				external: true,
 				icon: "streamline-logos:bilibili-logo-solid",
 			},
