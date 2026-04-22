@@ -27,7 +27,8 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			enable: true,
 			// 主页横幅主标题
 			// title: "Lovely firefly!",
-			title: "向着星辰与深渊",
+			// title: "向着星辰与深渊",
+			title: "",
 			// 主页横幅主标题字体大小11
 			titleSize: "3.8rem",
 			// 主页横幅副标题
@@ -38,12 +39,16 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				// "Upon Lighted Fyrefly, I Soon Gaze",
 				// "From Undreamt Night, I Thence Shine",
 				// "In Finalized Morrow, I Full Bloom",
-				"世事洞名皆学问，人情练达即文章。  ——《红楼梦》楹联",
-				"踏踏实实地活着本身就是令人欣喜的事。  ——《明日方舟》黍",
-				"祝愿你们的旅途处处充满了诅咒与祝福。  ——《来自深渊》黎明卿",
-				"当你重新踏上旅途之后，一定要记得旅途本身的意义。  ——《原神》温迪",
-				"距离繁星更近的每一步，都是开拓的收获。  ——《星穹铁道》姬子",
-				"愿此行，终抵群星！  ——《星穹铁道》开拓者",
+				// "世事洞名皆学问，人情练达即文章。  ——《红楼梦》楹联",
+				// "踏踏实实地活着本身就是令人欣喜的事。  ——《明日方舟》黍",
+				// "祝愿你们的旅途处处充满了诅咒与祝福。  ——《来自深渊》黎明卿",
+				// "当你重新踏上旅途之后，一定要记得旅途本身的意义。  ——《原神》温迪",
+				// "距离繁星更近的每一步，都是开拓的收获。  ——《星穹铁道》姬子",
+				// "愿此行，终抵群星！  ——《星穹铁道》开拓者",
+				"我来创想、我来制造、我来运转。",
+				"我为存在赋予意义，无中生有，千锤百炼天地成。",
+				"一切献给...克提西斯。",
+
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
@@ -53,7 +58,7 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 				// 打字机关闭 → 每次刷新随机显示一条副标题
 				enable: true,
 				// 打字速度（毫秒）
-				speed: 100,
+				speed: 125,
 				// 删除速度（毫秒）
 				deleteSpeed: 50,
 				// 完全显示后的暂停时间（毫秒）

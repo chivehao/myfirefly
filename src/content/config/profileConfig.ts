@@ -8,7 +8,8 @@ export const profileConfig: ProfileConfig = {
 	name: "阿豪",
 
 	// 个人签名
-	bio: "愿此行，终抵群星。",
+	// bio: "愿此行，终抵群星。",
+	bio: "一切献给...克提西斯。",
 
 	// 链接配置
 	// 已经预装的图标集：fa6-brands，fa6-regular，fa6-solid，material-symbols，simple-icons, streamline-logos
