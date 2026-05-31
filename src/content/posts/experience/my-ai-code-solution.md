@@ -29,8 +29,7 @@ tags: ["AI", "编码助手", "本地大模型", "Java", "Vue", "IntelliJ IDEA", 
 
 - **IDE 插件**：选 **Continue**。虽然它在 IDEA 上的体验不如 VS Code 完整，但它是目前能让我在社区版里免费、稳定连接本地模型的选择。关键在于，要找到能让它 Agent 模式正常工作的模型。
 - **模型运行后端**：必须是 **Ollama**，在本地模型管理这块很方便了。
-- **本地模型1**：**hhao/qwen2.5-coder-tools:7b-q4_K_M**。这是整套方案的核心。原生的 Qwen2.5-Coder 7B 不支持工具调用，而这个社区微调版专门解决了这个问题，让 Agent 模式可以在 6GB 显存上跑起来。
-- **本地模型2**：**deepseek-coder-v2:16b-lite-instruct-q4_K_M**。MOE架构，重复利用内存，在环境复制的项目里某些方面比上面那个强。
+- **本地模型**：**hhao/qwen2.5-coder-tools:7b-q4_K_M**。这是整套方案的核心。原生的 Qwen2.5-Coder 7B 不支持工具调用，而这个社区微调版专门解决了这个问题，让 Agent 模式可以在 6GB 显存上跑起来。
 - **云端备选**：**DeepSeek V4 Flash + Pro**。本地模型解决不了复杂 Bug 时，用它当个可靠的外援。
 
 ## 一步一步跟着做
@@ -60,7 +59,6 @@ ollama serve
 
 ```bash
 ollama pull hhao/qwen2.5-coder-tools:7b-q4_K_M
-ollama pull deepseek-coder-v2:16b-lite-instruct-q4_K_M
 ```
 
 为了支持代码库检索（@codebase 功能），最好再拉一个 embedding 模型：
@@ -78,15 +76,6 @@ ollama pull nomic-embed-text:latest
 - 实验性配置：指定默认 Agent 模型和补全模型都为主力 Qwen 模型
 - 上下文长度：设置为 32768
 
-### 第四步（可选）：引入 MoE 模型攻坚
-
-如果你的硬件允许（6GB 显存 + 32GB 内存），可以再拉一个 **DeepSeek-Coder-V2-Lite** 作为复杂任务的攻坚助手：
-
-```bash
-ollama pull deepseek-coder-v2:16b-lite-instruct-q4_K_M
-```
-
-然后在配置文件中的 models 列表里，新增一个攻坚助手条目：名称为 DeepSeek-Coder-V2-Lite，使用 Ollama 提供，模型名为 deepseek-coder-v2:16b-lite-instruct-q4_K_M，角色包括聊天、编辑和应用。
 
 ## 效果怎么样？
 
