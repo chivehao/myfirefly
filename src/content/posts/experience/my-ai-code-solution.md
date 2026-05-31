@@ -1,7 +1,7 @@
 ---
 title: "6GB显存的笔记本的AI编码方案实践"
 description: "在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。"
-pubDate: 2026-05-31
+published: 2026-05-31
 image: 'api'
 category: '经验总结'
 author: "chivehao"
