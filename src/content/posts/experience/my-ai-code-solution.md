@@ -116,3 +116,59 @@ ollama pull nomic-embed-text:latest
 最让我满意的一点是，~~整个运行都在本地，我的业务代码永远不会离开自己的电脑。这对于日常开发来说，是花钱也买不到的安全感。~~ 我的钱包表示它好受很多了。
 
 希望这篇记录能帮到正在折腾的你。
+
+## 最后贴一个我的插件配置
+```yaml
+name: MyModelConfig
+version: 1.0.0
+schema: v1
+models:
+  # 本地模型 - 日常主力 代码补全专用（保持低延迟）
+  - name: Qwen2.5 Coder 7B
+    provider: ollama
+    model: hhao/qwen2.5-coder-tools:7b-q4_K_M
+    apiBase: http://localhost:11434
+    roles:
+      - chat
+      - edit
+      - apply
+      - autocomplete
+
+
+  # 云端模型 - DeepSeek V4 Flash（性价比主力）
+  - name: DeepSeek V4 Flash
+    provider: deepseek
+    model: deepseek-v4-flash
+    apiKey: sk-xxx
+    apiBase: https://api.deepseek.com
+    roles:
+      - chat
+      - edit
+      - apply
+
+  # 云端模型 - DeepSeek V4 Pro（疑难攻坚）
+  - name: DeepSeek V4 Pro
+    provider: deepseek
+    model: deepseek-v4-pro
+    apiKey: sk-xxx
+    apiBase: https://api.deepseek.com
+    roles:
+      - chat
+      - edit
+      - apply
+
+  # 本地嵌入模型（用于代码检索/RAG）
+  - name: Nomic Embed
+    provider: ollama
+    model: nomic-embed-text:latest
+    apiBase: http://localhost:11434
+    roles:
+      - embed
+
+# 添加在 models 数组下方
+tabAutocompleteModel: Qwen2.5 Coder 7B
+defaultModel: Qwen2.5 Coder 7B
+
+# 上下文长度设置（本地模型支持128K，但保守设置保证稳定）
+contextLength: 32768
+```
