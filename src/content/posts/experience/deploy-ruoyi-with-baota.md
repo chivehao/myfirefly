@@ -217,7 +217,7 @@ add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent
 
 ## 为什么需要 /prod-api/ 反向代理
 
-若依前端在开发时通过 `Vue\_APP\_BASE\_API` 配置 API 地址，默认值是 `/prod-api`。
+若依前端在开发时通过 `VUE_APP_BASE_API` 配置 API 地址，默认值是 `/prod-api`。
 
 浏览器有**同源策略（CORS）**，如果前端域名 `admin.example.com` 直接请求后端 `localhost:8080`，跨域会被浏览器拦截。
 
