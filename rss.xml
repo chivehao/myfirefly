@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>阿豪博客小站</title><description>愿此行，终抵达群星。</description><link>https://chivehao.ikaros.run/</link><templateTheme>Firefly</templateTheme><templateThemeVersion>6.3.8</templateThemeVersion><templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl><lastBuildDate>2026年7月23日 21:49:41</lastBuildDate><item><title>宝塔如何部署若依开发的项目</title><link>https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</guid><description>详细记录如何通过宝塔面板部署若依（RuoYi）前后端分离项目的全流程，包含后端jar部署、前端nginx配置、反向代理、SSL证书配置等。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;若依（RuoYi）是目前国内使用非常广泛的 Java 后台管理系统框架，基于 SpringBoot + Vue 的前后端分离架构。&lt;/p&gt;&lt;p&gt;本文将详细介绍如何通过宝塔面板来部署若依开发的项目，全程使用宝塔的可视化操作，降低部署门槛。&lt;/p&gt;&lt;/section&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>阿豪博客小站</title><description>愿此行，终抵达群星。</description><link>https://chivehao.ikaros.run/</link><templateTheme>Firefly</templateTheme><templateThemeVersion>6.3.8</templateThemeVersion><templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl><lastBuildDate>2026年7月23日 22:10:47</lastBuildDate><item><title>宝塔如何部署若依开发的项目</title><link>https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</guid><description>详细记录如何通过宝塔面板部署若依（RuoYi）前后端分离项目的全流程，包含后端jar部署、前端nginx配置、反向代理、SSL证书配置等。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;若依（RuoYi）是目前国内使用非常广泛的 Java 后台管理系统框架，基于 SpringBoot + Vue 的前后端分离架构。&lt;/p&gt;&lt;p&gt;本文将详细介绍如何通过宝塔面板来部署若依开发的项目，全程使用宝塔的可视化操作，降低部署门槛。&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h1&gt;准备工作&lt;a href=&quot;#准备工作&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在开始之前，需要准备以下内容：&lt;/p&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;已经编译好的后端 jar 包&lt;/strong&gt; — 通过 &lt;code&gt;mvn clean package -DskipTests&lt;/code&gt; 打包，在 &lt;code&gt;ruoyi-admin/target/&lt;/code&gt; 下找到 &lt;code&gt;ruoyi-admin.jar&lt;/code&gt;（若配置了多模块）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;已经编译好的前端 dist 文件夹&lt;/strong&gt; — 进入 &lt;code&gt;ruoyi-ui&lt;/code&gt; 目录执行 &lt;code&gt;npm run build:prod&lt;/code&gt;，打包后在 &lt;code&gt;ruoyi-ui/dist/&lt;/code&gt; 下&lt;/li&gt;
@@ -154,7 +154,413 @@
 &lt;li&gt;&lt;strong&gt;不改源码&lt;/strong&gt; — 开发环境和生产环境的配置分离，打包出来的 jar 包可以直接从 CI 拿&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;方便变更&lt;/strong&gt; — 改端口、换数据库都不需要重新打包&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;环境隔离&lt;/strong&gt; — 同一份 jar 包可以用不同的参数跑不同的环境&lt;/li&gt;
-&lt;/ol&gt;&lt;/section&gt;&lt;/section&gt;</content:encoded></item><item><title>6GB显存的笔记本的AI编码方案实践</title><link>https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</guid><description>在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。</description><pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;描述&lt;a href=&quot;#描述&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;写在前面&lt;a href=&quot;#写在前面&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;作为一个日常写 Java 和 Vue 的开发人员，我其实很早就想引入 AI 辅助编码了。GitHub Copilot、JetBrains AI Assistant 这些确实好用，但每年大几百的订阅费，让囊中羞涩的我不免雪上加霜。&lt;/p&gt;&lt;p&gt;我的装备是 &lt;strong&gt;RTX 4050 6GB 显存 + 32GB 内存&lt;/strong&gt; 的笔记本，一直用着 &lt;strong&gt;IntelliJ IDEA 社区版&lt;/strong&gt;（有试用用试用，有开源证书用开源证书，大部分时间还是社区版）。&lt;/p&gt;&lt;p&gt;这篇文章，就是我折腾本地 AI 编码方案的最终总结。&lt;/p&gt;&lt;p&gt;目标是：&lt;strong&gt;免费(高性价比) + 数据不出门 + 能在 IDEA 里顺畅使用 + 支持 Agent 模式自动读写文件&lt;/strong&gt;。如果你有类似的硬件和需求，可以参考一下。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;方案的几个关键点&lt;a href=&quot;#方案的几个关键点&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在尝试了好几种方案后，我总结出一个适合自己的工作流：&lt;strong&gt;本地部署为主，云端调用为辅，并选择专门为工具调用微调过的模型&lt;/strong&gt;。&lt;/p&gt;&lt;ul&gt;
+&lt;/ol&gt;&lt;/section&gt;&lt;/section&gt;</content:encoded></item><item><title>为什么更推荐容器化部署</title><link>https://chivehao.ikaros.run/posts/experience/traditional-vs-container-deployment/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/traditional-vs-container-deployment/</guid><description>从环境一致性、资源利用、扩缩容、部署速度、学习成本等多个维度，对比传统部署与容器化部署的优劣，帮助选择适合的部署方式。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;随着容器技术的普及，越来越多项目从传统部署迁移到容器化部署。但容器化并不是银弹，传统部署在某些场景下依然有不可替代的优势。&lt;/p&gt;&lt;p&gt;本文从多个维度对比两种部署方式，帮助你在实际项目中做出合理选择。&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;什么是传统部署&lt;a href=&quot;#什么是传统部署&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;传统部署指的是直接在物理机或虚拟机上部署应用的方式：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;物理机部署&lt;/strong&gt; — 应用直接跑在服务器硬件上，通过 systemd、supervisor 等进程管理工具守护&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;虚拟机部署&lt;/strong&gt; — 应用跑在虚拟机（VMware、VirtualBox、PVE）里，每台虚拟机一个完整操作系统&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;面板部署&lt;/strong&gt; — 通过宝塔、1Panel 等面板工具管理，本质也是进程级部署&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;典型例子：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;# 传统部署 SpringBoot 应用&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;java&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;-jar&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;my-app.jar&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;--server.port=8080&lt;/span&gt;&lt;span&gt; &amp;amp;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;4&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;# 通过宝塔面板&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;5&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;# 上传 jar → 配置参数 → 启动&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;什么是容器化部署&lt;a href=&quot;#什么是容器化部署&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;容器化部署是将应用及其依赖打包到容器镜像中，通过容器运行时（Docker、containerd）统一管理：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Docker 部署&lt;/strong&gt; — 单机容器编排，适合中小项目&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Docker Compose&lt;/strong&gt; — 多容器编排，适合微服务架构&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kubernetes（K8s）&lt;/strong&gt; — 集群级容器编排，适合大规模分布式系统&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;典型例子：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;# Docker Compose 部署 SpringBoot 应用&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;version&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;&apos;3&apos;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;services&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;4&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;&lt;span&gt;app&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;5&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;    &lt;/span&gt;&lt;span&gt;image&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;my-app:latest&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;6&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;    &lt;/span&gt;&lt;span&gt;ports&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;7&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;      &lt;/span&gt;&lt;/span&gt;&lt;span&gt;- &lt;/span&gt;&lt;span&gt;&quot;8080:8080&quot;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;8&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;    &lt;/span&gt;&lt;span&gt;environment&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;9&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;      &lt;/span&gt;&lt;/span&gt;&lt;span&gt;- &lt;/span&gt;&lt;span&gt;SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/app&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;10&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;    &lt;/span&gt;&lt;span&gt;depends_on&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;11&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;      &lt;/span&gt;&lt;/span&gt;&lt;span&gt;- &lt;/span&gt;&lt;span&gt;db&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;12&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;  &lt;/span&gt;&lt;span&gt;db&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;13&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;    &lt;/span&gt;&lt;span&gt;image&lt;/span&gt;&lt;span&gt;: &lt;/span&gt;&lt;span&gt;mysql:8&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;14&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;    &lt;/span&gt;&lt;span&gt;environment&lt;/span&gt;&lt;span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;15&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;span&gt;      &lt;/span&gt;&lt;/span&gt;&lt;span&gt;- &lt;/span&gt;&lt;span&gt;MYSQL_ROOT_PASSWORD=root&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;多维度对比&lt;a href=&quot;#多维度对比&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;section&gt;&lt;h2&gt;1. 环境一致性&lt;a href=&quot;#1-环境一致性&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;环境差异&lt;/td&gt;&lt;td&gt;开发、测试、生产环境不一致，常有「在我机器上能跑」&lt;/td&gt;&lt;td&gt;镜像打包了完整运行环境，开发到生产一模一样&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;JDK 版本冲突&lt;/td&gt;&lt;td&gt;同一服务器只能装一个 JDK 版本，多项目冲突&lt;/td&gt;&lt;td&gt;每个容器独立 JDK，互不干扰&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;依赖冲突&lt;/td&gt;&lt;td&gt;不同项目依赖的系统库版本冲突（如 openssl、libc）&lt;/td&gt;&lt;td&gt;容器内独立文件系统，完全不冲突&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;操作系统差异&lt;/td&gt;&lt;td&gt;开发 Mac/Windows，部署 Linux，踩坑不断&lt;/td&gt;&lt;td&gt;容器镜像就是 Linux，开发时就能跑一样的&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;传统部署痛点：&lt;/strong&gt; 你在 Mac 上开发好好的，部署到 CentOS 发现某个系统库版本不对，调试大半天。容器化把整个运行环境打包，这种问题基本不存在。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;2. 资源利用率&lt;a href=&quot;#2-资源利用率&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;资源开销&lt;/td&gt;&lt;td&gt;虚拟机有完整 OS，占几 GB 内存和磁盘&lt;/td&gt;&lt;td&gt;容器共享宿主机内核，仅多几 MB 开销&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CPU/内存限制&lt;/td&gt;&lt;td&gt;靠应用自身限制，容易被某个进程吃满&lt;/td&gt;&lt;td&gt;Cgroups 精确限制每个容器的 CPU/内存上限&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;资源碎片&lt;/td&gt;&lt;td&gt;一台机器跑多个应用，端口冲突、资源争抢&lt;/td&gt;&lt;td&gt;容器独立隔离，资源分配更合理&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;密度&lt;/td&gt;&lt;td&gt;一台机器跑几个应用到顶了&lt;/td&gt;&lt;td&gt;一台机器跑几十上百个容器很正常&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;实测对比：&lt;/strong&gt; 我在同一台机器上做了真实实验，运行同一个 Java HTTP 应用（-Xmx128m -Xms64m）：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;指标&lt;/th&gt;&lt;th&gt;传统 java -jar&lt;/th&gt;&lt;th&gt;Docker 容器内运行&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Java 版本&lt;/td&gt;&lt;td&gt;OpenJDK 21.0.11&lt;/td&gt;&lt;td&gt;openjdk:21-slim 镜像&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;进程 RSS&lt;/td&gt;&lt;td&gt;&lt;strong&gt;113 MB&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;105 MB&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Cgroup 内存&lt;/td&gt;&lt;td&gt;不适用&lt;/td&gt;&lt;td&gt;&lt;strong&gt;96.52 MiB / 256 MiB&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Docker 镜像大小&lt;/td&gt;&lt;td&gt;不适用&lt;/td&gt;&lt;td&gt;439 MB（磁盘，非内存）&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;数据来源：实际运行结果，&lt;a href=&quot;https://github.com/nekoili/myfirefly&quot;&gt;实验代码仓库可复现&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;结论：&lt;strong&gt;容器本身带来的额外内存开销不到 10MB&lt;/strong&gt;，和 JVM 的内存消耗相比可以忽略不计。Docker 官方也明确指出容器是 “lightweight” 的，适合 “high density environments”，参见 &lt;a href=&quot;https://docs.docker.com/get-started/docker-overview/&quot;&gt;Docker overview&lt;/a&gt;。&lt;/p&gt;&lt;p&gt;真正决定密度的不是容器 vs 非容器，而是&lt;strong&gt;有没有用资源限制&lt;/strong&gt;：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;传统部署如果忘了设 &lt;code&gt;-Xmx&lt;/code&gt;，SpringBoot 默认堆 = 机器内存的 1/4（一台 16GB 机器就是 4GB），跑不了几个就 OOM&lt;/li&gt;
+&lt;li&gt;容器化通过 &lt;code&gt;--memory&lt;/code&gt; 和 &lt;code&gt;-Xmx&lt;/code&gt; 配合精确限制每个实例的内存上限，可以放心地超配部署&lt;/li&gt;
+&lt;li&gt;容器化没有端口冲突问题（每个容器独立网络命名空间都可以用 8080），传统部署要手动分配端口&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;加上这些因素，同样 16GB 内存的机器，容器化能部署的实例数通常是传统部署的 &lt;strong&gt;3-5 倍&lt;/strong&gt;（具体倍数取决于应用本身的内存需求）。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;3. 扩缩容&lt;a href=&quot;#3-扩缩容&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;扩容速度&lt;/td&gt;&lt;td&gt;新开服务器 → 部署应用 → 配置环境，分钟到小时级&lt;/td&gt;&lt;td&gt;直接拉取镜像启动容器，秒级&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;缩容&lt;/td&gt;&lt;td&gt;手动停进程，释放资源慢&lt;/td&gt;&lt;td&gt;停容器即释放资源，即时回收&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;弹性伸缩&lt;/td&gt;&lt;td&gt;基本靠人工，或者写复杂脚本&lt;/td&gt;&lt;td&gt;K8s HPA 自动伸缩，根据 CPU/请求数自动加减实例&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;流量分发&lt;/td&gt;&lt;td&gt;手动配 Nginx upstream，改配置 reload&lt;/td&gt;&lt;td&gt;K8s Service + Ingress 自动负载均衡&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;传统部署痛点：&lt;/strong&gt; 双十一流量突增，运维半夜爬起来手动加机器、配 Nginx。容器化部署配合 HPA，流量涨了自动加实例，降了自动缩，全程无人值守。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;4. 部署速度&lt;a href=&quot;#4-部署速度&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;首次部署&lt;/td&gt;&lt;td&gt;装系统 → 环境配置 → 应用部署，数小时&lt;/td&gt;&lt;td&gt;写 Dockerfile → 构建镜像 → 启动，分钟级&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;日常更新&lt;/td&gt;&lt;td&gt;上传新 jar → 停旧进程 → 启新进程，有停机时间&lt;/td&gt;&lt;td&gt;滚动更新，逐个替换容器，零停机&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;回滚&lt;/td&gt;&lt;td&gt;重新上传旧版本，步骤繁琐&lt;/td&gt;&lt;td&gt;切换镜像标签秒级回滚&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CI/CD 集成&lt;/td&gt;&lt;td&gt;需要手动写部署脚本，每个项目单独配置&lt;/td&gt;&lt;td&gt;标准化流水线，镜像构建 + 自动化部署&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;5. 学习成本&lt;a href=&quot;#5-学习成本&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;入门门槛&lt;/td&gt;&lt;td&gt;低，装好面板拖拽操作就能部署&lt;/td&gt;&lt;td&gt;高，需要理解 Docker、镜像、网络、存储&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;团队要求&lt;/td&gt;&lt;td&gt;普通运维即可&lt;/td&gt;&lt;td&gt;需要专门的 DevOps 或 SRE&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;故障排查&lt;/td&gt;&lt;td&gt;直接 ssh 登机器看日志、查进程&lt;/td&gt;&lt;td&gt;要懂 kubectl、docker logs、容器网络调试&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;工具链&lt;/td&gt;&lt;td&gt;Linux 基础命令即可&lt;/td&gt;&lt;td&gt;Docker、K8s、Helm、Prometheus 等一套生态&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;传统部署优势：&lt;/strong&gt; 一个刚毕业的运维，给他宝塔面板半天就能上手。容器化的学习曲线陡得多，光 K8s 的网络模型就能研究一周。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;6. 成本&lt;a href=&quot;#6-成本&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;硬件成本&lt;/td&gt;&lt;td&gt;同等负载需要更多机器，资源利用率低&lt;/td&gt;&lt;td&gt;资源利用率高，同样机器能跑更多服务&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;人力成本&lt;/td&gt;&lt;td&gt;运维门槛低，普通运维即可&lt;/td&gt;&lt;td&gt;需要高薪 DevOps，人力成本更高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;基础设施&lt;/td&gt;&lt;td&gt;面板工具很多免费&lt;/td&gt;&lt;td&gt;企业级 K8s 集群需要额外的管理节点成本&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;迁移成本&lt;/td&gt;&lt;td&gt;技术栈成熟，资料多&lt;/td&gt;&lt;td&gt;迁移容器化涉及 Dockerfile、编排文件改造&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;核心矛盾：&lt;/strong&gt; 容器化省的是服务器硬件钱，但花的是人的钱。小项目用传统部署，机器多买几台也花不了多少；大规模集群用容器化，省下的机器钱远超人力投入。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;7. 隔离性&lt;a href=&quot;#7-隔离性&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;进程隔离&lt;/td&gt;&lt;td&gt;同一台机器所有进程共享内核，一个 OOM 可能拉垮整台机器&lt;/td&gt;&lt;td&gt;每个容器独立 cgroup，OOM 只杀容器内的进程&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;文件系统&lt;/td&gt;&lt;td&gt;所有应用共享文件系统，误操作可能删别人文件&lt;/td&gt;&lt;td&gt;每个容器独立文件系统，想删也删不到别的容器&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;网络隔离&lt;/td&gt;&lt;td&gt;端口冲突、iptables 规则互相影响&lt;/td&gt;&lt;td&gt;容器独立网络命名空间，端口随意用&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;安全隔离&lt;/td&gt;&lt;td&gt;一个应用被攻破，整台机器沦陷&lt;/td&gt;&lt;td&gt;容器逃逸难度大于传统进程逃逸&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;8. 可移植性&lt;a href=&quot;#8-可移植性&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;跨平台&lt;/td&gt;&lt;td&gt;部署脚本依赖特定发型版（CentOS、Ubuntu），迁移成本高&lt;/td&gt;&lt;td&gt;镜像在哪都能跑，Docker 支持所有主流平台&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;云迁移&lt;/td&gt;&lt;td&gt;更换云厂商可能涉及操作系统更换、重配环境&lt;/td&gt;&lt;td&gt;镜像直接拉起，换云厂商只需修改编排文件&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;开发环境&lt;/td&gt;&lt;td&gt;让新成员搭建开发环境要写文档，半天起步&lt;/td&gt;&lt;td&gt;docker-compose up，一条命令启动全部依赖&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;9. 监控与运维&lt;a href=&quot;#9-监控与运维&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;日志管理&lt;/td&gt;&lt;td&gt;文件日志，查看需 ssh tail 或配置 ELK&lt;/td&gt;&lt;td&gt;标准输出日志，Docker 自动收集，配合 EFK/Loki&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;健康检查&lt;/td&gt;&lt;td&gt;手动写脚本检测进程&lt;/td&gt;&lt;td&gt;原生支持 readiness/liveness 探针&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;资源监控&lt;/td&gt;&lt;td&gt;top、htop 手动看，或装 agent&lt;/td&gt;&lt;td&gt;cAdvisor、Prometheus 自动采集容器级指标&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;告警&lt;/td&gt;&lt;td&gt;自己搭监控告警系统&lt;/td&gt;&lt;td&gt;K8s 生态自带事件告警&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;10. 存储持久化&lt;a href=&quot;#10-存储持久化&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;数据持久化&lt;/td&gt;&lt;td&gt;天然支持，数据直接写磁盘&lt;/td&gt;&lt;td&gt;容器默认无状态，数据消失，需要挂载卷&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;数据库部署&lt;/td&gt;&lt;td&gt;直接安装，性能最好&lt;/td&gt;&lt;td&gt;数据库容器化有性能损失，生产一般不建议&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;文件存储&lt;/td&gt;&lt;td&gt;本地文件系统直接读写&lt;/td&gt;&lt;td&gt;需要挂载 NFS、Ceph 或云存储，增加了复杂度&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;传统部署优势：&lt;/strong&gt; 数据库部署直接用原生安装，性能没有容器化的额外开销。特别是 MySQL、PostgreSQL 这类有状态服务，传统部署更可靠。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;如何选择&lt;a href=&quot;#如何选择&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;section&gt;&lt;h2&gt;选传统部署的场景&lt;a href=&quot;#选传统部署的场景&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;小项目、个人项目&lt;/strong&gt; — 就一两台服务器，面板拖拽搞定，没必要上容器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;团队运维能力有限&lt;/strong&gt; — 没有懂容器化的运维或开发&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据库、中间件&lt;/strong&gt; — 有状态服务用传统部署更稳定&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;老旧项目&lt;/strong&gt; — 改造成容器化的成本大于收益&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;硬件资源极有限&lt;/strong&gt; — 低配 VPS（1C1G），多跑一个 Docker daemon 都是负担&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;选容器化部署的场景&lt;a href=&quot;#选容器化部署的场景&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;微服务架构&lt;/strong&gt; — 服务多，依赖复杂，容器化是标配&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;需要弹性伸缩&lt;/strong&gt; — 流量波动大的业务（电商、游戏、活动页）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多环境频繁发布&lt;/strong&gt; — CI/CD 流水线成熟，一天发布几十次&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;团队有 DevOps 能力&lt;/strong&gt; — 有人能搞定 Docker、K8s 生态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多云或混合云&lt;/strong&gt; — 需要跨云平台一致的部署方式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大并发、大规模集群&lt;/strong&gt; — 20 台以上服务器，不容器化运维就是噩梦&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;可以混合使用&lt;a href=&quot;#可以混合使用&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;不是非黑即白的选择，很多公司是混合部署：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;静态文件 + 前端  →  Nginx（传统部署）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;无状态 API 服务  →  Docker / K8s（容器化）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;数据库 + Redis   →  物理机 / VM（传统部署）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;4&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;定时任务         →  K8s CronJob（容器化）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;这样既有容器的弹性，又让数据库跑在裸机上获得最佳性能。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;总结&lt;a href=&quot;#总结&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;学习成本&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;环境一致性&lt;/td&gt;&lt;td&gt;差&lt;/td&gt;&lt;td&gt;好&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;资源利用率&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;扩缩容速度&lt;/td&gt;&lt;td&gt;慢&lt;/td&gt;&lt;td&gt;快&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;硬件成本&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;人力成本&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;隔离性&lt;/td&gt;&lt;td&gt;差&lt;/td&gt;&lt;td&gt;好&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;可移植性&lt;/td&gt;&lt;td&gt;差&lt;/td&gt;&lt;td&gt;好&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;适合规模&lt;/td&gt;&lt;td&gt;小中型项目&lt;/td&gt;&lt;td&gt;中大型项目&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;一句话总结：&lt;/strong&gt; 人少机器多用传统部署，人多机器少用容器化部署。&lt;/p&gt;&lt;/section&gt;</content:encoded></item><item><title>6GB显存的笔记本的AI编码方案实践</title><link>https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</guid><description>在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。</description><pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;描述&lt;a href=&quot;#描述&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;写在前面&lt;a href=&quot;#写在前面&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;作为一个日常写 Java 和 Vue 的开发人员，我其实很早就想引入 AI 辅助编码了。GitHub Copilot、JetBrains AI Assistant 这些确实好用，但每年大几百的订阅费，让囊中羞涩的我不免雪上加霜。&lt;/p&gt;&lt;p&gt;我的装备是 &lt;strong&gt;RTX 4050 6GB 显存 + 32GB 内存&lt;/strong&gt; 的笔记本，一直用着 &lt;strong&gt;IntelliJ IDEA 社区版&lt;/strong&gt;（有试用用试用，有开源证书用开源证书，大部分时间还是社区版）。&lt;/p&gt;&lt;p&gt;这篇文章，就是我折腾本地 AI 编码方案的最终总结。&lt;/p&gt;&lt;p&gt;目标是：&lt;strong&gt;免费(高性价比) + 数据不出门 + 能在 IDEA 里顺畅使用 + 支持 Agent 模式自动读写文件&lt;/strong&gt;。如果你有类似的硬件和需求，可以参考一下。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;方案的几个关键点&lt;a href=&quot;#方案的几个关键点&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在尝试了好几种方案后，我总结出一个适合自己的工作流：&lt;strong&gt;本地部署为主，云端调用为辅，并选择专门为工具调用微调过的模型&lt;/strong&gt;。&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;IDE 插件&lt;/strong&gt;：选 &lt;strong&gt;Continue&lt;/strong&gt;。虽然它在 IDEA 上的体验不如 VS Code 完整，但它是目前能让我在社区版里免费、稳定连接本地模型的选择。关键在于，要找到能让它 Agent 模式正常工作的模型。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;模型运行后端&lt;/strong&gt;：必须是 &lt;strong&gt;Ollama&lt;/strong&gt;，在本地模型管理这块很方便了。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;本地模型&lt;/strong&gt;：&lt;strong&gt;hhao/qwen2.5-coder-tools:7b-q4_K_M&lt;/strong&gt;。这是整套方案的核心。原生的 Qwen2.5-Coder 7B 不支持工具调用，而这个社区微调版专门解决了这个问题，让 Agent 模式可以在 6GB 显存上跑起来。&lt;/li&gt;
