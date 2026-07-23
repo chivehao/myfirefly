@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>阿豪博客小站</title><description>愿此行，终抵达群星。</description><link>https://chivehao.ikaros.run/</link><templateTheme>Firefly</templateTheme><templateThemeVersion>6.3.8</templateThemeVersion><templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl><lastBuildDate>2026年7月23日 22:10:47</lastBuildDate><item><title>宝塔如何部署若依开发的项目</title><link>https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</guid><description>详细记录如何通过宝塔面板部署若依（RuoYi）前后端分离项目的全流程，包含后端jar部署、前端nginx配置、反向代理、SSL证书配置等。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;若依（RuoYi）是目前国内使用非常广泛的 Java 后台管理系统框架，基于 SpringBoot + Vue 的前后端分离架构。&lt;/p&gt;&lt;p&gt;本文将详细介绍如何通过宝塔面板来部署若依开发的项目，全程使用宝塔的可视化操作，降低部署门槛。&lt;/p&gt;&lt;/section&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>阿豪博客小站</title><description>愿此行，终抵达群星。</description><link>https://chivehao.ikaros.run/</link><templateTheme>Firefly</templateTheme><templateThemeVersion>6.3.8</templateThemeVersion><templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl><lastBuildDate>2026年7月23日 22:14:39</lastBuildDate><item><title>宝塔如何部署若依开发的项目</title><link>https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/deploy-ruoyi-with-baota/</guid><description>详细记录如何通过宝塔面板部署若依（RuoYi）前后端分离项目的全流程，包含后端jar部署、前端nginx配置、反向代理、SSL证书配置等。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;若依（RuoYi）是目前国内使用非常广泛的 Java 后台管理系统框架，基于 SpringBoot + Vue 的前后端分离架构。&lt;/p&gt;&lt;p&gt;本文将详细介绍如何通过宝塔面板来部署若依开发的项目，全程使用宝塔的可视化操作，降低部署门槛。&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h1&gt;准备工作&lt;a href=&quot;#准备工作&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在开始之前，需要准备以下内容：&lt;/p&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;已经编译好的后端 jar 包&lt;/strong&gt; — 通过 &lt;code&gt;mvn clean package -DskipTests&lt;/code&gt; 打包，在 &lt;code&gt;ruoyi-admin/target/&lt;/code&gt; 下找到 &lt;code&gt;ruoyi-admin.jar&lt;/code&gt;（若配置了多模块）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;已经编译好的前端 dist 文件夹&lt;/strong&gt; — 进入 &lt;code&gt;ruoyi-ui&lt;/code&gt; 目录执行 &lt;code&gt;npm run build:prod&lt;/code&gt;，打包后在 &lt;code&gt;ruoyi-ui/dist/&lt;/code&gt; 下&lt;/li&gt;
@@ -154,7 +154,8 @@
 &lt;li&gt;&lt;strong&gt;不改源码&lt;/strong&gt; — 开发环境和生产环境的配置分离，打包出来的 jar 包可以直接从 CI 拿&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;方便变更&lt;/strong&gt; — 改端口、换数据库都不需要重新打包&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;环境隔离&lt;/strong&gt; — 同一份 jar 包可以用不同的参数跑不同的环境&lt;/li&gt;
-&lt;/ol&gt;&lt;/section&gt;&lt;/section&gt;</content:encoded></item><item><title>为什么更推荐容器化部署</title><link>https://chivehao.ikaros.run/posts/experience/traditional-vs-container-deployment/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/traditional-vs-container-deployment/</guid><description>从环境一致性、资源利用、扩缩容、部署速度、学习成本等多个维度，对比传统部署与容器化部署的优劣，帮助选择适合的部署方式。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;随着容器技术的普及，越来越多项目从传统部署迁移到容器化部署。但容器化并不是银弹，传统部署在某些场景下依然有不可替代的优势。&lt;/p&gt;&lt;p&gt;本文从多个维度对比两种部署方式，帮助你在实际项目中做出合理选择。&lt;/p&gt;&lt;/section&gt;
+&lt;/ol&gt;&lt;/section&gt;&lt;/section&gt;</content:encoded></item><item><title>为什么更推荐容器化部署</title><link>https://chivehao.ikaros.run/posts/experience/traditional-vs-container-deployment/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/traditional-vs-container-deployment/</guid><description>用真实数据解释为什么更推荐容器化部署：环境一致性、资源密度、运维效率三个核心原因，附实测内存开销数据和场景选择建议。</description><pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;前言&lt;a href=&quot;#前言&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;不管你是个人开发者还是团队的一员，部署方式的选择直接影响项目的交付效率、运维成本和扩展能力。&lt;/p&gt;&lt;p&gt;我在前面的文章里已经介绍了通过宝塔面板部署若依项目的具体步骤，那里用的是传统部署方式。但传统部署和容器化部署到底差在哪里？为什么越来越多的团队——包括我自己——会更推荐容器化？&lt;/p&gt;&lt;p&gt;本文从一个实际开发者的视角，用真实数据说话，帮你理解为什么容器化是更值得推荐的选择（以及什么时候传统部署反而更合适）。&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;一句话答案：为什么更推荐容器化&lt;a href=&quot;#一句话答案为什么更推荐容器化&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;容器化解决了一个传统部署永远绕不开的核心矛盾——「环境不一致」和「资源争抢」.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;传统部署下，开发说「在我机器上能跑啊」，运维说「服务器上跑不起来」，测试说「环境和线上不一样」——这是所有团队都经历过的内耗。容器化把运行环境打包进镜像，这个矛盾从根本上消失了。&lt;/p&gt;&lt;p&gt;再加上资源隔离、弹性伸缩、秒级部署这些能力，容器化在绝大多数场景下是更优选择。&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h1&gt;什么是传统部署&lt;a href=&quot;#什么是传统部署&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;传统部署指的是直接在物理机或虚拟机上部署应用的方式：&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;物理机部署&lt;/strong&gt; — 应用直接跑在服务器硬件上，通过 systemd、supervisor 等进程管理工具守护&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;虚拟机部署&lt;/strong&gt; — 应用跑在虚拟机（VMware、VirtualBox、PVE）里，每台虚拟机一个完整操作系统&lt;/li&gt;
@@ -505,62 +506,11 @@
 &lt;li&gt;&lt;strong&gt;多云或混合云&lt;/strong&gt; — 需要跨云平台一致的部署方式&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;大并发、大规模集群&lt;/strong&gt; — 20 台以上服务器，不容器化运维就是噩梦&lt;/li&gt;
 &lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;可以混合使用&lt;a href=&quot;#可以混合使用&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;不是非黑即白的选择，很多公司是混合部署：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;静态文件 + 前端  →  Nginx（传统部署）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;2&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;无状态 API 服务  →  Docker / K8s（容器化）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;3&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;数据库 + Redis   →  物理机 / VM（传统部署）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;4&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;定时任务         →  K8s CronJob（容器化）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;div&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;这样既有容器的弹性，又让数据库跑在裸机上获得最佳性能。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
-&lt;section&gt;&lt;h1&gt;总结&lt;a href=&quot;#总结&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;维度&lt;/th&gt;&lt;th&gt;传统部署&lt;/th&gt;&lt;th&gt;容器化部署&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;学习成本&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;环境一致性&lt;/td&gt;&lt;td&gt;差&lt;/td&gt;&lt;td&gt;好&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;资源利用率&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;扩缩容速度&lt;/td&gt;&lt;td&gt;慢&lt;/td&gt;&lt;td&gt;快&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;硬件成本&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;人力成本&lt;/td&gt;&lt;td&gt;低&lt;/td&gt;&lt;td&gt;高&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;隔离性&lt;/td&gt;&lt;td&gt;差&lt;/td&gt;&lt;td&gt;好&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;可移植性&lt;/td&gt;&lt;td&gt;差&lt;/td&gt;&lt;td&gt;好&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;适合规模&lt;/td&gt;&lt;td&gt;小中型项目&lt;/td&gt;&lt;td&gt;中大型项目&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;一句话总结：&lt;/strong&gt; 人少机器多用传统部署，人多机器少用容器化部署。&lt;/p&gt;&lt;/section&gt;</content:encoded></item><item><title>6GB显存的笔记本的AI编码方案实践</title><link>https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</guid><description>在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。</description><pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;描述&lt;a href=&quot;#描述&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;写在前面&lt;a href=&quot;#写在前面&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;作为一个日常写 Java 和 Vue 的开发人员，我其实很早就想引入 AI 辅助编码了。GitHub Copilot、JetBrains AI Assistant 这些确实好用，但每年大几百的订阅费，让囊中羞涩的我不免雪上加霜。&lt;/p&gt;&lt;p&gt;我的装备是 &lt;strong&gt;RTX 4050 6GB 显存 + 32GB 内存&lt;/strong&gt; 的笔记本，一直用着 &lt;strong&gt;IntelliJ IDEA 社区版&lt;/strong&gt;（有试用用试用，有开源证书用开源证书，大部分时间还是社区版）。&lt;/p&gt;&lt;p&gt;这篇文章，就是我折腾本地 AI 编码方案的最终总结。&lt;/p&gt;&lt;p&gt;目标是：&lt;strong&gt;免费(高性价比) + 数据不出门 + 能在 IDEA 里顺畅使用 + 支持 Agent 模式自动读写文件&lt;/strong&gt;。如果你有类似的硬件和需求，可以参考一下。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;方案的几个关键点&lt;a href=&quot;#方案的几个关键点&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在尝试了好几种方案后，我总结出一个适合自己的工作流：&lt;strong&gt;本地部署为主，云端调用为辅，并选择专门为工具调用微调过的模型&lt;/strong&gt;。&lt;/p&gt;&lt;ul&gt;
+&lt;section&gt;&lt;h1&gt;总结：为什么更推荐容器化&lt;a href=&quot;#总结为什么更推荐容器化&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;回到文章标题的问题。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;核心原因就三个：&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;环境一致性&lt;/strong&gt; — 开发、测试、生产跑同一个镜像，不再有「在我机器能跑」的问题。这是容器化最根本的价值，其他所有优势都是建立在这个基础上的&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源密度和隔离&lt;/strong&gt; — 精确限制每个实例的资源上限（实测容器本身开销不到 10MB），没有端口冲突，同样硬件能跑更多实例&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运维效率&lt;/strong&gt; — 扩容秒级、滚动更新零停机、秒级回滚、自动伸缩，这些能力在传统部署下需要投入大量精力才能实现&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;&lt;strong&gt;但也要诚实地说：&lt;/strong&gt; 容器化的学习成本确实高。宝塔拖拽半小时就能上线，Docker + K8s 的生态至少需要一两周才能上手。如果你的场景是个人项目、1-2 台服务器、没有复杂部署需求，传统部署完全够用。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;一句话结论：&lt;/strong&gt; 容器化是锦上添花，不是雪中送炭。小项目用传统部署没问题，但一旦项目超过 3 个服务、5 台机器、或需要多人协作，容器化的收益就远超学习成本。&lt;/p&gt;&lt;/section&gt;</content:encoded></item><item><title>6GB显存的笔记本的AI编码方案实践</title><link>https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</link><guid isPermaLink="true">https://chivehao.ikaros.run/posts/experience/my-ai-code-solution/</guid><description>在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。</description><pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1&gt;描述&lt;a href=&quot;#描述&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;在RTX 4050 Laptop 6GB显存 + IntelliJ IDEA环境下，如何通过Ollama、Continue和微调后的Qwen模型，实现一个免费、私密、支持Agent模式的本地AI编程助手。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;写在前面&lt;a href=&quot;#写在前面&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;作为一个日常写 Java 和 Vue 的开发人员，我其实很早就想引入 AI 辅助编码了。GitHub Copilot、JetBrains AI Assistant 这些确实好用，但每年大几百的订阅费，让囊中羞涩的我不免雪上加霜。&lt;/p&gt;&lt;p&gt;我的装备是 &lt;strong&gt;RTX 4050 6GB 显存 + 32GB 内存&lt;/strong&gt; 的笔记本，一直用着 &lt;strong&gt;IntelliJ IDEA 社区版&lt;/strong&gt;（有试用用试用，有开源证书用开源证书，大部分时间还是社区版）。&lt;/p&gt;&lt;p&gt;这篇文章，就是我折腾本地 AI 编码方案的最终总结。&lt;/p&gt;&lt;p&gt;目标是：&lt;strong&gt;免费(高性价比) + 数据不出门 + 能在 IDEA 里顺畅使用 + 支持 Agent 模式自动读写文件&lt;/strong&gt;。如果你有类似的硬件和需求，可以参考一下。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;方案的几个关键点&lt;a href=&quot;#方案的几个关键点&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在尝试了好几种方案后，我总结出一个适合自己的工作流：&lt;strong&gt;本地部署为主，云端调用为辅，并选择专门为工具调用微调过的模型&lt;/strong&gt;。&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;IDE 插件&lt;/strong&gt;：选 &lt;strong&gt;Continue&lt;/strong&gt;。虽然它在 IDEA 上的体验不如 VS Code 完整，但它是目前能让我在社区版里免费、稳定连接本地模型的选择。关键在于，要找到能让它 Agent 模式正常工作的模型。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;模型运行后端&lt;/strong&gt;：必须是 &lt;strong&gt;Ollama&lt;/strong&gt;，在本地模型管理这块很方便了。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;本地模型&lt;/strong&gt;：&lt;strong&gt;hhao/qwen2.5-coder-tools:7b-q4_K_M&lt;/strong&gt;。这是整套方案的核心。原生的 Qwen2.5-Coder 7B 不支持工具调用，而这个社区微调版专门解决了这个问题，让 Agent 模式可以在 6GB 显存上跑起来。&lt;/li&gt;
