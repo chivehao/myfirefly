@@ -31,7 +31,7 @@ draft: false
 
 - **物理机部署** — 应用直接跑在服务器硬件上，通过 systemd、supervisor 等进程管理工具守护
 - **虚拟机部署** — 应用跑在虚拟机（VMware、VirtualBox、PVE）里，每台虚拟机一个完整操作系统
-- **面板部署** — 通过宝塔、1Panel 等面板工具管理，本质也是进程级部署
+- **面板部署** — 通过宝塔等面板工具管理，本质也是进程级部署
 
 典型例子：
 
@@ -102,7 +102,7 @@ services:
 | Cgroup 内存 | 不适用 | **96.52 MiB / 256 MiB** |
 | Docker 镜像大小 | 不适用 | 439 MB（磁盘，非内存） |
 
-数据来源：实际运行结果，[实验代码仓库可复现](https://github.com/nekoili/myfirefly)。
+数据来源：实际运行结果。
 
 结论：**容器本身带来的额外内存开销不到 10MB**，和 JVM 的内存消耗相比可以忽略不计。Docker 官方也明确指出容器是 "lightweight" 的，适合 "high density environments"，参见 [Docker overview](https://docs.docker.com/get-started/docker-overview/)。
 
