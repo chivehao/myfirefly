@@ -3,6 +3,7 @@ title: 宝塔如何部署若依开发的项目
 published: 2026-07-23
 pinned: false
 description: '详细记录如何通过宝塔面板部署若依（RuoYi）前后端分离项目的全流程，包含后端jar部署、前端nginx配置、反向代理、SSL证书配置等。'
+image: 'api'
 tags: ['若依', 'RuoYi', '宝塔', '部署', 'SpringBoot']
 category: '经验总结'
 draft: false
