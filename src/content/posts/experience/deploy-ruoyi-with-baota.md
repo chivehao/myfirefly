@@ -237,6 +237,130 @@ Nginx 代理的方式也更安全，后端端口可以不对外暴露，只让 N
 
 这也是一般生产环境的推荐架构：Nginx 在前，应用在后。
 
+### 反向代理的更多优势
+
+**1. 负载均衡**
+
+如果你有多个后端实例，Nginx 可以用一个入口分发请求：
+
+```nginx
+upstream backend {
+    server 127.0.0.1:8080 weight=3;
+    server 127.0.0.1:8081 weight=2;
+    server 127.0.0.1:8082;
+}
+
+location /prod-api/ {
+    proxy_pass http://backend/;
+}
+```
+
+**2. 统一域名 + 多服务聚合**
+
+一个域名下可以聚合多个后端服务，通过路径区分：
+
+```nginx
+location /prod-api/     { proxy_pass http://127.0.0.1:8080/; }  # 若依后端
+location /api/           { proxy_pass http://127.0.0.1:3000/; }  # 另一个 Node 服务
+location /websocket/     { proxy_pass http://127.0.0.1:9000/; }  # WebSocket 服务
+```
+
+访问者只需要记一个域名，体验统一。
+
+**3. 缓存静态资源**
+
+Nginx 可以对不经常变化的 API 响应做缓存，减轻后端压力：
+
+```nginx
+location /prod-api/ {
+    proxy_cache my_cache;
+    proxy_cache_valid 200 10m;
+    proxy_pass http://127.0.0.1:8080/;
+}
+```
+
+**4. 请求过滤与限流**
+
+在代理层就能拦截恶意请求，都不用走到后端：
+
+```nginx
+# 限制某个 IP 每分钟最多 60 次请求
+location /prod-api/ {
+    limit_req zone=mylimit burst=20 nodelay;
+    proxy_pass http://127.0.0.1:8080/;
+}
+```
+
+**5. 灰度发布 / 蓝绿部署**
+
+修改 upstream 就能切换流量，后端无感：
+
+```nginx
+upstream backend {
+    server 127.0.0.1:8080;   # 旧版本
+    server 127.0.0.1:8081;   # 新版本，逐步引流
+}
+```
+
+### 对比：不配反向代理会怎样
+
+| 做法 | 问题 |
+|------|------|
+| 直接暴露后端端口 8080 | 攻击者可以直接扫端口、打接口；前端跨域需要额外处理 |
+| 后端改端口为 80/443 | 和 Nginx 冲突（端口被占），而且后端性能不如 Nginx 处理静态文件 |
+| 每个服务一个独立域名 | 要配多个 SSL 证书，维护成本高，用户体验割裂 |
+
+### 实际场景举例
+
+**场景一：同一台服务器跑若依 + 另一个 SpringBoot 应用**
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name admin.example.com;
+
+    location / {                    # 前端页面
+        root /www/wwwroot/admin;
+    }
+    location /prod-api/ {           # 若依后端 API
+        proxy_pass http://127.0.0.1:8080/;
+    }
+    location /other-api/ {          # 另一个后端 API
+        proxy_pass http://127.0.0.1:9090/;
+    }
+}
+```
+
+用户访问 `admin.example.com/other-api/xxx` 就能调另一个服务，完全无感。
+
+**场景二：前后端分离，域名也分离**
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name admin.example.com;      # 前端域名
+
+    location / {
+        root /www/wwwroot/admin;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name api.example.com;        # API 独立域名
+
+    location / {
+        proxy_pass http://127.0.0.1:8080/;
+    }
+}
+```
+
+这样前后端用不同域名，API 暴露更清晰，但要多一个 SSL 证书。
+
+**场景三：开发环境热加载**
+
+本地开发时前端 `npm run dev` 默认走 80 端口，Nginx 代理 `localhost:8080` 可以同时代理其他后端服务，一套 Nginx 配置开发和生产通用。
+
 ## 为什么要申请 SSL 证书
 
 如果不用 HTTPS：
