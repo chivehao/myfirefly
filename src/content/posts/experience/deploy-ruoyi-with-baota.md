@@ -45,7 +45,7 @@ draft: false
 
 - **项目名称**：自定义，如 `ruoyi-admin`
 - **项目路径**：选择 jar 包所在目录
-- **JDK版本**：选择对应版本（若依推荐 JDK 1.8）
+- **JDK版本**：选择对应版本（推荐 JDK 21，若依 SpringBoot3 分支需要 JDK 17+）
 - **项目端口**：填写你项目规定的端口，若依默认是 `8080`
 
 ![](https://imgbed.ikaros.run/file/file/bt-java-project.png)
