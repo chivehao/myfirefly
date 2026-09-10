@@ -39,34 +39,36 @@ const novelProjects: ProjectItem[] = projects.filter(p => p.type === "novel");
                     </div>
                 </div>
 
-                <!-- 小说项目 -->
-                <div class="projects-group">
-                    <h2>小说项目</h2>
-                    <div class="projects-grid">
-                        {novelProjects.map(project => (
-                                <article class="project-card novel">
-                                    {project.cover && <img src={project.cover} alt={project.title} class="cover" loading="lazy" />}
-                                    <div class="info">
-                                        <div class="title-status">
-                                            <h3>{project.title}</h3>
-                                            {project.status && <span class={`status ${project.status}`}>{project.status}</span>}
+                {novelProjects.length > 0 && (
+                    <!-- 小说项目 -->
+                    <div class="projects-group">
+                        <h2>小说项目</h2>
+                        <div class="projects-grid">
+                            {novelProjects.map(project => (
+                                    <article class="project-card novel">
+                                        {project.cover && <img src={project.cover} alt={project.title} class="cover" loading="lazy" />}
+                                        <div class="info">
+                                            <div class="title-status">
+                                                <h3>{project.title}</h3>
+                                                {project.status && <span class={`status ${project.status}`}>{project.status}</span>}
+                                            </div>
+                                            <p class="desc">{project.description}</p>
+                                            {project.tags && (
+                                                    <ul class="tags">
+                                                        {project.tags.map(tag => <li>{tag}</li>)}
+                                                    </ul>
+                                            )}
+                                            <footer>
+                                                {project.url && '#' !== project.url ? (
+                                                        <a href={project.url} class="btn" target="_blank">查看详情 →</a>
+                                                ) : (<span class="disabled-btn">项目未就绪</span>)}
+                                            </footer>
                                         </div>
-                                        <p class="desc">{project.description}</p>
-                                        {project.tags && (
-                                                <ul class="tags">
-                                                    {project.tags.map(tag => <li>{tag}</li>)}
-                                                </ul>
-                                        )}
-                                        <footer>
-                                            {project.url && '#' !== project.url ? (
-                                                    <a href={project.url} class="btn" target="_blank">查看详情 →</a>
-                                            ) : (<span class="disabled-btn">项目未就绪</span>)}
-                                        </footer>
-                                    </div>
-                                </article>
-                        ))}
+                                    </article>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </section>
         </div>
     </div>
