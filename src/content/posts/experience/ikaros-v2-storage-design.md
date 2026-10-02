@@ -2,7 +2,7 @@
 title: Ikaros v2 存储架构设计
 published: 2026-09-04
 updated: 2026-10-03
-description: '从业务场景梳理 Ikaros v2 中资源、附件、Blob 与 Placement 的三个一对多关系，以及文件元数据、去重与归档恢复的职责。'
+description: '从业务场景梳理 Ikaros v2 中资源、附件、Blob 与 Placement 的层级关系，以及附件与 Blob 的多对多关联、文件元数据、去重与归档恢复的职责。'
 tags: ["ikaros"]
 image: 'api'
 category: '经验总结'
@@ -14,7 +14,8 @@ category: '经验总结'
 
 * 元数据与实际文件如何分离；
 * Resource / Attachment / Blob / Placement 各自负责什么；
-* 三个一对多关系分别对应哪些实际业务场景；
+* 业务层级关系与实际关联模型分别对应哪些场景；
+* 文件元数据如何保存，附件之间的关系如何描述；
 * HOT / WARM / COLD / ARCHIVE 如何分层；
 * Local Filesystem / NAS / S3 / OSS / COS 如何接入；
 * Storage Provider 与 Delivery Provider 为什么要分开；
@@ -30,7 +31,7 @@ Ikaros V2 的核心原则是：
 
 业务层不直接依赖本地路径、Bucket、Object Key 或具体存储厂商地址。
 
-从资源向下看，当前存储架构包含三个一对多关系：
+从单个资源或附件的业务视角向下看，可以按以下层级理解存储架构：
 
 ```text
 Resource（资源） 1 : N Attachment（附件）
@@ -40,13 +41,15 @@ Blob            1 : N Placement
 
 每个关系都有明确的业务场景：
 
-| 关系 | 一对多的实际场景 | 区分的对象 |
+| 关系 | 业务场景 | 实际关联模型 |
 | --- | --- | --- |
-| Resource → Attachment | 同一番剧剧集的资源关联不同压制组提供的附件 | 不同来源的业务附件 |
-| Attachment → Blob | 一份视频转码为不同码率的文件 | 同一附件的不同文件表示 |
-| Blob → Placement | 归档原始数据与解冻出来的临时数据同时存在 | 同一文件的不同存储副本 |
+| Resource → Attachment | 同一番剧剧集的资源关联不同压制组提供的附件 | 一对多 |
+| Attachment ↔ Blob | 同一附件包含不同码率的文件表示；不同附件通过 SHA-256 去重复用相同 Blob | 多对多 |
+| Blob → Placement | 归档原始数据与解冻出来的临时数据同时存在 | 一对多 |
 
-一对多表示模型允许一个对象关联多个下级对象，并不要求每条数据都必须有多个关联。一个资源暂时只有一个附件、一个附件只有原始 Blob，或一个 Blob 只有一个 Placement，都是合法场景；这些实例呈现一对一，不代表关系应设计为一对一。
+Attachment → Blob 从单个附件的业务逻辑来看是一对多；结合全局去重，一个 Blob 又可以被多个 Attachment 引用，因此实际关系应建模为多对多，通过关联表连接。
+
+关系基数表示模型允许的关联数量，并不要求每条数据都必须有多个关联。一个资源暂时只有一个附件、一个附件只有原始 Blob，或一个 Blob 只有一个 Placement，都是合法场景；这些实例呈现一对一，不代表关系应设计为一对一。
 
 整体结构如下：
 
@@ -60,10 +63,10 @@ Blob            1 : N Placement
                        Attachment
                    业务附件的逻辑身份
                              │
-                        1 : N Blob
+                        M : N Blob
                              ▼
                            Blob
-                不可变内容 + SHA-256 + 文件元数据
+                  不可变内容 + SHA-256 + Size
                              │
                        1 : N Placement
                              ▼
@@ -82,7 +85,10 @@ Blob            1 : N Placement
 
 PostgreSQL
  ├── storage.attachment
+ ├── Attachment / Blob 关联表（多对多）
+ ├── 附件间的业务关系
  ├── storage.blob
+ ├── storage.blob_metadata（文件元数据）
  ├── storage.blob_placement
  ├── storage.storage_provider
  ├── Storage Policy
@@ -108,7 +114,7 @@ Resource：绑定《孤独摇滚》第 01 集
 └── 封面           -> Attachment D
 ```
 
-Attachment 本身也可以关联多个 Blob。一份视频转成不同码率后，仍然属于同一个附件，但每个转码文件分别对应一个 Blob：
+Attachment 本身也可以关联多个 Blob。从业务身份上看，一份视频转成不同码率后，仍然是同一个逻辑文件，应归属于同一个附件；转码改变了文件字节和哈希，每个转码文件分别对应一个 Blob：
 
 ```text
 Attachment A：压制组 A 的正片
@@ -118,6 +124,17 @@ Attachment A：压制组 A 的正片
 ```
 
 因此，不同压制组提供的附件在 Attachment 层区分，同一附件的不同码率文件在 Blob 层区分。
+
+转码应扩展原有 Attachment 关联的 Blob，不能仅因哈希改变，就创建多个 Attachment 来关联这些转码文件。
+
+不同逻辑文件之间的业务关系，则通过附件之间的关系描述。例如：
+
+```text
+视频 Attachment ── 字幕关系 ──> 字幕 Attachment
+歌曲 Attachment ── 歌词关系 ──> 歌词 Attachment
+```
+
+视频和字幕、歌曲和歌词分别拥有独立的 Attachment，各自关联自己的 Blob。附件间的关系描述内容如何配合使用；Attachment 与 Blob 的关联描述一个逻辑文件有哪些文件表示。
 
 Attachment 可以包含：
 
@@ -157,37 +174,39 @@ Attachment A
 ├── Blob A1：原始视频
 │   sha256 = abcdef...
 │   size   = 1.42 GB
-│   视频元数据：时长、分辨率、码率、编码格式等
+│   blob_metadata：原始视频的时长、分辨率、码率、编码格式等
 └── Blob A2：低码率转码文件
     sha256 = 123456...
     size   = 420 MB
-    视频元数据：该转码文件对应的时长、分辨率、码率、编码格式等
+    blob_metadata：该转码文件的时长、分辨率、码率、编码格式等
 ```
 
 Blob 主要负责：
 
 * 用于全局去重的 SHA-256 内容摘要；
 * 文件大小；
-* MIME Type 等通用文件元数据；
-* 视频的时长、分辨率、码率、编码格式等视频元数据；
-* 音频的时长、采样率、声道、编码格式等音频元数据；
 * 内容身份；
 * 完整性校验；
 * 去重。
 
-元数据描述的是具体文件，应随 Blob 保存。不同转码文件的码率、大小等信息可能不同，不应作为整个 Attachment 唯一的一份文件元数据。
+文件元数据归属于具体 Blob，可以独立存入 `blob_metadata` 表，通过 `blob_id` 关联对应 Blob。`blob` 表保存 SHA-256、文件大小等内容身份与去重所需的信息，`blob_metadata` 表承载文件描述信息，例如：
 
-一个 Attachment 可以关联多个 Blob；全局去重时，多个 Attachment 也可以复用同一个 Blob。这两个方向的关联并不冲突。
+* MIME Type 等通用文件元数据；
+* 视频的时长、分辨率、码率、编码格式等视频元数据；
+* 音频的时长、采样率、声道、编码格式等音频元数据。
 
-例如两个 Resource 实际引用的是同一份视频：
+不同转码文件的码率、大小等信息可能不同，不应作为整个 Attachment 唯一的一份文件元数据。Placement 也不需要为同一 Blob 的每份副本重复保存这些信息。
+
+一个 Attachment 可以关联多个 Blob；全局去重时，多个 Attachment 也可以复用同一个 Blob。因此，Attachment 与 Blob 实际上是多对多关系。
+
+例如，Attachment A 有原始视频和低码率转码文件，而另一个资源的 Attachment B 引用了与原始视频字节完全相同的文件：
 
 ```text
-Attachment A ─┐
-              ├──> Blob abcdef
-Attachment B ─┘
+Attachment A ──┬──> Blob abcdef（原始视频）<── Attachment B
+               └──> Blob 123456（低码率转码文件）
 ```
 
-这样可以避免重复存储相同内容。
+通过 SHA-256 去重后，A 与 B 复用 Blob abcdef，同时 A 还关联自己的转码 Blob。数据库应使用 Attachment / Blob 关联表表达这些关系，不能只在一侧保存单个外键，也不能让一个 Blob 只能归属一个 Attachment。
 
 ---
 
@@ -220,7 +239,7 @@ Blob abcdef：SHA-256 与文件元数据不变
 
 ```text
 Attachment
-    ↓ 1 : N
+    ↕ M : N
 Blob
     ↓ 1 : N
 Placement
@@ -751,7 +770,10 @@ Evict
 已经明确包含：
 
 * Attachment；
+* 附件间的业务关系；
+* Attachment / Blob 多对多关联；
 * Blob；
+* Blob Metadata（可独立存入 `blob_metadata` 表）；
 * Blob Placement；
 * Storage Provider；
 * HOT / WARM / COLD / ARCHIVE；
@@ -861,7 +883,7 @@ Ikaros V2 存储架构可以总结成：
 Resource
    ↓ 1 : N：不同压制组等业务附件
 Attachment
-   ↓ 1 : N：原始文件与不同码率等文件表示
+   ↕ M : N：不同文件表示，并允许全局去重复用
 Blob
    ↓ 1 : N：归档、解冻临时数据等存储副本
 Placement
@@ -869,9 +891,13 @@ Placement
 Storage Provider
 ```
 
-这三个一对多关系都对应实际需求：Resource 聚合业务附件，Attachment 聚合同一附件的不同文件表示，Blob 保存具体文件的 SHA-256 和元数据，Placement 管理该文件的不同存储副本。
+这三个层级关系都对应实际需求：Resource 聚合业务附件，Attachment 聚合同一逻辑文件的不同文件表示，Blob 保存具体字节的内容身份，Placement 管理该文件的不同存储副本。
 
-当前只关联一个下级对象的实例可以按一对一使用；需要不同压制组、不同码率或解冻副本时，模型也能自然容纳一对多，而不必改变各层的职责。
+Attachment 与 Blob 在单个附件的业务视角下是一对多，结合 SHA-256 全局去重后，实际模型是多对多。转码产生新的 Blob，仍关联原来的 Attachment；字节相同的文件则复用已有 Blob。
+
+具体文件的元数据可以由 `blob_metadata` 表保存，并关联到 Blob。视频与字幕、歌曲与歌词等不同逻辑文件之间的关系，由附件之间的业务关系描述。
+
+当前只关联一个对象的实例可以按一对一使用；需要不同压制组、不同码率、去重复用或解冻副本时，模型也能容纳相应关联，而不必改变各层的职责。
 
 同时：
 
