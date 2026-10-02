@@ -15,7 +15,8 @@ category: '经验总结'
 * 元数据与实际文件如何分离；
 * Resource / Attachment / Blob / Placement 各自负责什么；
 * 业务层级关系与实际关联模型分别对应哪些场景；
-* 文件元数据如何保存，附件之间的关系如何描述；
+* 下载、预览如何选择原件或其他 Blob；
+* 文件与业务元数据如何分别保存，附件之间的关系如何描述；
 * HOT / WARM / COLD / ARCHIVE 如何分层；
 * Local Filesystem / NAS / S3 / OSS / COS 如何接入；
 * Storage Provider 与 Delivery Provider 为什么要分开；
@@ -84,6 +85,7 @@ Attachment → Blob 从单个附件的业务逻辑来看是一对多；结合全
                            OSS/COS/etc.
 
 PostgreSQL
+ ├── resource_metadata（业务元数据）
  ├── storage.attachment
  ├── Attachment / Blob 关联表（多对多）
  ├── 附件间的业务关系
@@ -127,6 +129,17 @@ Attachment A：压制组 A 的正片
 
 转码应扩展原有 Attachment 关联的 Blob，不能仅因哈希改变，就创建多个 Attachment 来关联这些转码文件。
 
+下载和预览默认使用附件的原件 Blob。请求可以通过参数切换到该附件关联的其他 Blob，例如低码率转码文件；没有传入切换参数时，仍然使用原件。
+
+```text
+Attachment A 的下载 / 预览请求
+├── 未传切换参数           -> Blob A1（原始视频）
+├── 参数指定高码率转码文件 -> Blob A2
+└── 参数指定低码率转码文件 -> Blob A3
+```
+
+这里的切换是为请求选择文件表示，附件的默认选择仍然是原件。
+
 不同逻辑文件之间的业务关系，则通过附件之间的关系描述。例如：
 
 ```text
@@ -138,7 +151,7 @@ Attachment A：压制组 A 的正片
 
 Attachment 可以包含：
 
-* 业务名称、原始文件名；
+* 原始文件名；
 * Usage Kind；
 * Source；
 * 生命周期；
@@ -195,7 +208,17 @@ Blob 主要负责：
 * 视频的时长、分辨率、码率、编码格式等视频元数据；
 * 音频的时长、采样率、声道、编码格式等音频元数据。
 
+`blob_metadata` 只保存文件相关的元数据。业务标题、歌手、用户备注等业务元数据由 `resource_metadata` 表负责保存，归属于 Resource 对应的业务领域。
+
+| 表 | 职责 | 示例 |
+| --- | --- | --- |
+| `blob` | 内容身份与去重 | SHA-256、文件大小 |
+| `blob_metadata` | 具体文件的元数据 | 时长、编码、码率、分辨率、采样率、声道 |
+| `resource_metadata` | 资源的业务元数据 | 业务标题、歌手、用户备注 |
+
 不同转码文件的码率、大小等信息可能不同，不应作为整个 Attachment 唯一的一份文件元数据。Placement 也不需要为同一 Blob 的每份副本重复保存这些信息。
+
+不同附件复用同一个 Blob 时，共享该文件的技术元数据；各自所属资源的业务元数据仍由 `resource_metadata` 独立管理。
 
 一个 Attachment 可以关联多个 Blob；全局去重时，多个 Attachment 也可以复用同一个 Blob。因此，Attachment 与 Blob 实际上是多对多关系。
 
@@ -772,8 +795,10 @@ Evict
 * Attachment；
 * 附件间的业务关系；
 * Attachment / Blob 多对多关联；
+* 下载、预览默认使用原件，并支持通过请求参数选择其他 Blob；
 * Blob；
 * Blob Metadata（可独立存入 `blob_metadata` 表）；
+* Resource Metadata（由 `resource_metadata` 表保存业务元数据）；
 * Blob Placement；
 * Storage Provider；
 * HOT / WARM / COLD / ARCHIVE；
@@ -895,7 +920,9 @@ Storage Provider
 
 Attachment 与 Blob 在单个附件的业务视角下是一对多，结合 SHA-256 全局去重后，实际模型是多对多。转码产生新的 Blob，仍关联原来的 Attachment；字节相同的文件则复用已有 Blob。
 
-具体文件的元数据可以由 `blob_metadata` 表保存，并关联到 Blob。视频与字幕、歌曲与歌词等不同逻辑文件之间的关系，由附件之间的业务关系描述。
+下载、预览默认使用附件的原件 Blob，通过请求参数可以选择该附件关联的其他 Blob；未传参数时仍使用原件。
+
+`blob_metadata` 只保存具体文件的元数据，并关联到 Blob；业务标题、歌手、用户备注等业务元数据由 `resource_metadata` 保存。视频与字幕、歌曲与歌词等不同逻辑文件之间的关系，由附件之间的业务关系描述。
 
 当前只关联一个对象的实例可以按一对一使用；需要不同压制组、不同码率、去重复用或解冻副本时，模型也能容纳相应关联，而不必改变各层的职责。
 
